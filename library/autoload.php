@@ -8,6 +8,8 @@
  */
 function __autoload($className)
 {
-    $path = str_replace('\\', DIRECTORY_SEPARATOR, $className) . '.php';
+    $search = array('\\', '_');
+    $replace = array(DIRECTORY_SEPARATOR, DIRECTORY_SEPARATOR);
+    $path = str_replace($search, $replace, $className) . '.php';
     require $path;
 }
