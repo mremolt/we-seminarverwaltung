@@ -1,21 +1,17 @@
 <?php
 
 namespace controllers;
+use library\BaseController;
 
 /**
  * Description of BenutzerController
  *
  * @author Marc Remolt <m.remolt@webmasters.de>
  */
-class BenutzerController
+class BenutzerController extends BaseController
 {
-    public function executeIndex()
+    public function indexAction()
     {
-        
-    }
-
-    public function run($action, $params = array())
-    {
-        var_dump($params);
+        echo 'Index!!!';
     }
 }

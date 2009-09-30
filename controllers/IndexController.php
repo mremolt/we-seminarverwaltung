@@ -1,21 +1,17 @@
 <?php
 
 namespace controllers;
+use library\BaseController;
 
 /**
  * Description of IndexController
  *
  * @author Marc Remolt <m.remolt@webmasters.de>
  */
-class IndexController
+class IndexController extends BaseController
 {
-    public function executeIndex()
+    public function indexAction()
     {
         
-    }
-
-    public function run($action, $params = array())
-    {
-        var_dump($params);
     }
 }
