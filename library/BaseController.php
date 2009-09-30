@@ -6,7 +6,7 @@ namespace library;
  * Diese Klasse bildet die Basis für alle anderen Controller
  * 
  * @author Marc Remolt <m.remolt@webmasters.de>
- * @package Library
+ * @package library
  */
 abstract class BaseController
 {

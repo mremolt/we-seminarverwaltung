@@ -7,6 +7,7 @@ use library\BaseController;
  * Description of IndexController
  *
  * @author Marc Remolt <m.remolt@webmasters.de>
+ * @package controllers
  */
 class ErrorController extends BaseController
 {
