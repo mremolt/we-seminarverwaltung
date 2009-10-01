@@ -39,11 +39,24 @@ class Router
         return static::$instance;
     }
 
+    /**
+     * Getter
+     *
+     * @return array
+     */
     public function getRoutes()
     {
         return $this->routes;
     }
 
+    /**
+     * Fügt dem Router eine neue Route hinzu
+     *
+     * @param string $url
+     * @param string $controller
+     * @param string $action
+     * @return Router
+     */
     public function connect($url, $controller, $action = 'index')
     {
         // entferne Leerzeichen und / um die URL, /blog/zeige/ wird also zu blog/zeige
@@ -55,6 +68,12 @@ class Router
         return $this;
     }
 
+    /**
+     * Gibt die Route passend zu der übergebenen URL zurück
+     *
+     * @param string $url
+     * @return array
+     */
     public function match($url)
     {
         // entferne Leerzeichen und / um die URL, /blog/zeige/ wird also zu blog/zeige
@@ -66,15 +85,17 @@ class Router
         } else {
             // ansonsten falle auf das Standardverhalten zurück
             $parts = explode('/', $url);
-
-            // falls die URL '/' übergeben wurde, ist in $parts[0] ein leerer String.
-            if (array_key_exists(0, $parts) && empty($parts[0])) {
-                unset($parts[0]);
-            }
+            var_dump($parts);
 
             // hat eine URL keinen Controller oder Action, verwende index als Standard
             $controller = array_key_exists(0, $parts) ? $parts[0] : 'index';
             $action     = array_key_exists(1, $parts) ? $parts[1] : 'index';
+
+            // falls die URL '/' übergeben wurde, ist in $controller nun ein leerer String 
+            // FIXME: bessere Lösung für Workaround
+            if ( empty($controller) ) {
+                $controller = 'index';
+            }
 
             $route = array (
                 'controller' => $controller,

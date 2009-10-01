@@ -29,7 +29,6 @@ class RouterTest extends \PHPUnit_Framework_Testcase
     public function testMatch()
     {       
         $router = Router::getInstance();
-        var_dump($router);
         $this->assertEquals($router->match('/'), array(
             'controller' => 'index',
             'action' => 'index'
