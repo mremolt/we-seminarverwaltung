@@ -1,0 +1,8 @@
+<p>Wollen Sie das Seminar "<?php echo $seminar->getTitel() ?>" wirklich löschen?</p>
+
+<form action="<?php echo $this->urlfor('seminar', 'loeschen') ?>" method="post">
+    <input type="hidden" name="id" value="<?php echo $seminar->getId() ?>" />
+    <input type="submit" value="löschen" />
+</form>
+
+<p><a href="<?php echo $this->urlFor('seminar') ?>">zurück zur Übersicht</a>

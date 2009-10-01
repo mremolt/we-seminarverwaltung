@@ -1,1 +1,27 @@
-<p>Ich bin die Index-Seite!</p>
+<table border="1">
+    <tr>
+        <th>Titel</th>
+        <th>Beschreibung</th>
+        <th>Preis (in Euro)</th>
+        <th>Kategorie</th>
+        <th>editieren</th>
+        <th>löschen</th>
+    </tr>
+    <?php foreach ($seminare as $s): ?>
+        <tr>
+            <td><?php echo $s->getTitel() ?></td>
+            <td><?php echo $s->getBeschreibungFormatiert() ?></td>
+            <td><?php echo $s->getPreis() ?> €</td>
+            <td><?php echo $s->getKategorie() ?></td>
+            <td>
+                <a href="<?php echo $this->urlFor('seminar', 'editieren') ?>?id=<?php echo $s->getId() ?>">editieren</a>
+            </td>
+            <td>
+                <a href="<?php echo $this->urlFor('seminar', 'loeschen') ?>?id=<?php echo $s->getId() ?>">löschen</a>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+</table>
+<p>
+    <a href="<?php echo $this->urlFor('seminar', 'neu') ?>">Neues Seminar eintragen</a>
+</p>

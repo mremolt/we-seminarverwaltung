@@ -37,6 +37,9 @@ class Benutzer extends ActiveRecord
      */
     public function setVorname($vorname)
     {
+        if (empty($vorname)) {
+            $this->addError('vorname', 'Das Feld Vorname darf nich leer sein');
+        }
         $this->vorname = $vorname;
         return $this;
     }
@@ -59,6 +62,9 @@ class Benutzer extends ActiveRecord
      */
     public function setName($name)
     {
+        if (empty($name)) {
+            $this->addError('name', 'Das Feld Name darf nich leer sein');
+        }
         $this->name = $name;
         return $this;
     }
@@ -81,8 +87,21 @@ class Benutzer extends ActiveRecord
      */
     public function setEmail($email)
     {
+        if (! filter_var($email, FILTER_VALIDATE_EMAIL) ) {
+            $this->addError('email', 'Sie haben keine gültige E-Mail-Adresse eingegeben.');
+        }
         $this->email = $email;
         return $this;
+    }
+
+    /**
+     * Getter
+     *
+     * @return string
+     */
+    public function getPasswort()
+    {
+        return $this->passwort;
     }
 
     /**
@@ -93,6 +112,9 @@ class Benutzer extends ActiveRecord
      */
     public function setPasswort($passwort)
     {
+        if (empty($passwort)) {
+            $this->addError('passwort', 'Das Feld Passwort darf nich leer sein');
+        }
         $this->passwort = $passwort;
         return $this;
     }
@@ -105,6 +127,16 @@ class Benutzer extends ActiveRecord
     public function getRegistriert_seit()
     {
         return $this->registriert_seit;
+    }
+
+    /**
+     * Getter
+     *
+     * @return string
+     */
+    public function getRegistriert_seitFormatiert()
+    {
+        return strftime('%d.%m.%Y', strtotime($this->registriert_seit));
     }
 
     /**
@@ -192,6 +224,15 @@ class Benutzer extends ActiveRecord
             $this->getName(),
             $this->getEmail()
         ));
+    }
+
+    /**
+     * Überladung des Hooks
+     */
+    public function _preInsert()
+    {
+        // vor dem ersten Einfügen wird das Registierungsdatum auf 'heute' gesetzt
+        $this->setRegistriert_seit(strftime('%Y-%m-%d'));
     }
 
     /**

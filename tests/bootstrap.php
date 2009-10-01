@@ -13,4 +13,4 @@ ini_set('include_path', ini_get('include_path') . ':' . dirname(dirname(__FILE__
 
 // put your code here
 require_once '../library/autoload.php';
-?>
+define('PROJECT_URL', '/test/url');

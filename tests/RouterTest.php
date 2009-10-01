@@ -67,6 +67,18 @@ class RouterTest extends \PHPUnit_Framework_Testcase
         ));
     }
 
+    public function testGetUrlFor()
+    {
+        $router = Router::getInstance();
+        $this->assertEquals($router->getUrlFor(), '/test/url/index/index');
+        $this->assertEquals($router->getUrlFor('index'), '/test/url/index/index');
+        $this->assertEquals($router->getUrlFor('index', 'index'), '/test/url/index/index');
+        $this->assertEquals($router->getUrlFor('index', 'test'), '/test/url/index/test');
+        $this->assertEquals($router->getUrlFor('bla', 'blub'), '/test/url/bla/blub');
+        $this->assertEquals($router->getUrlFor('bla', 'test'), '/test/url/bla/blub');
+        $this->assertEquals($router->getUrlFor('bla'), '/test/url/bla/index');
+    }
+
     protected function setup()
     {
         $router = Router::getInstance();

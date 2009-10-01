@@ -85,7 +85,6 @@ class Router
         } else {
             // ansonsten falle auf das Standardverhalten zurück
             $parts = explode('/', $url);
-            var_dump($parts);
 
             // hat eine URL keinen Controller oder Action, verwende index als Standard
             $controller = array_key_exists(0, $parts) ? $parts[0] : 'index';
@@ -103,5 +102,29 @@ class Router
             );
         }
         return $route;
+    }
+
+    /**
+     * Liefert die URL zu einem Controller/Action-Paar
+     *
+     * @param string $controller
+     * @param string $action
+     * @return $string
+     */
+    public function getUrlFor($controller = 'index', $action = 'index')
+    {
+        $route = array('controller' => $controller, 'action' => $action);
+        $routes = $this->getRoutes();
+        
+        // suche erst nach einer manuell festgelegten Route
+        $url = array_search($route, $routes);
+        if ($url === false) {
+            // wenn keine gefunden wurde
+            $url = $controller . '/' . $action;
+        }
+
+        // hänge die PROJECT_URL als Prefix an die URL
+        $url = PROJECT_URL . '/' . $url;
+        return $url;
     }
 }

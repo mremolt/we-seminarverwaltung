@@ -1,1 +1,28 @@
-<p>Ich bin die Index-Seite!</p>
+<table border="1">
+    <tr>
+        <th>Vorname</th>
+        <th>Name</th>
+        <th>E-Mail-Adresse</th>
+        <th>Registiert seit</th>
+        <th>editieren</th>
+        <th>löschen</th>
+    </tr>
+    <?php foreach ($benutzer as $b): ?>
+        <tr>
+            <td><?php echo $b->getVorname() ?></td>
+            <td><?php echo $b->getName() ?></td>
+            <td><?php echo $b->getEmail() ?></td>
+            <td><?php echo $b->getRegistriert_seitFormatiert() ?></td>
+            <td>
+                <a href="<?php echo $this->urlFor('benutzer', 'editieren') ?>?id=<?php echo $b->getId() ?>">editieren</a>
+            </td>
+            <td>
+                <a href="<?php echo $this->urlFor('benutzer', 'loeschen') ?>?id=<?php echo $b->getId() ?>">löschen</a>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+</table>
+<p>
+    <a href="<?php echo $this->urlFor('benutzer', 'neu') ?>">Neuen Benutzer eintragen</a>
+</p>
+

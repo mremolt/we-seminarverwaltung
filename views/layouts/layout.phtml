@@ -13,12 +13,25 @@
 
         <div id="kopf">
             <h1>Die Seminarverwaltung - <?php echo $title ?></h1>
+            <ul>
+                <li style="display: inline;">
+                    <a href="<?php echo $this->urlFor('seminar') ?>">Seminare</a> |
+                </li>
+                <li style="display: inline;">
+                    <a href="<?php echo $this->urlFor('seminartermine') ?>">Seminartermine</a> |
+                </li>
+                <li style="display: inline;">
+                    <a href="<?php echo $this->urlFor('benutzer') ?>">Benutzer</a>
+                </li>
+            </ul>
         </div>
-
+            <?php if ($this->hasMessages() ): ?>
+                <p style="color: green"><?php echo $this->displayMessages() ?></p>
+            <?php endif; ?>
             <?php require_once $this->getTemplatePath(); ?>
 
         <div id="fuss">
-            Das ist das Ende
+            Der Footer
         </div>
 
     </div>

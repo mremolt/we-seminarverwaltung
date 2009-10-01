@@ -1,0 +1,8 @@
+<p>Wollen Sie den Benutzer Seminar "<?php echo $benutzer ?>" wirklich löschen?</p>
+
+<form action="<?php echo $this->urlfor('benutzer', 'loeschen') ?>" method="post">
+    <input type="hidden" name="id" value="<?php echo $benutzer->getId() ?>" />
+    <input type="submit" value="löschen" />
+</form>
+
+<p><a href="<?php echo $this->urlFor('benutzer') ?>">zurück zur Übersicht</a>

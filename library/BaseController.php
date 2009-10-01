@@ -56,7 +56,7 @@ abstract class BaseController
         $this->_templateName = $action;
         
         // Standardtitel setzen
-        $this->setContext('title', $action);
+        $this->setContext('title', ucfirst($this->_getControllerShortName()) . ' - ' . $action);
 
         // Action ausführen
         $methodName = $action . 'Action';
@@ -74,6 +74,48 @@ abstract class BaseController
             $controller = new \controllers\ErrorController();
             $controller->run('notfound', $this->getParams());
         }
+    }
+
+    public function urlFor($controller = 'index', $action = 'index')
+    {
+        return Router::getInstance()->getUrlFor($controller, $action);
+    }
+
+    public function redirectTo($controller = 'index', $action = 'index')
+    {
+        $url = $this->urlFor($controller, $action);
+        header('Location: ' . $url);
+        exit();
+    }
+
+    public function isPost()
+    {
+         return $_SERVER['REQUEST_METHOD'] === 'POST';
+    }
+
+    public function isGet()
+    {
+        return $_SERVER['REQUEST_METHOD'] === 'GET';
+    }
+
+    public function addMessage($message)
+    {
+        $_SESSION['messages'][] = $message;
+    }
+
+    public function hasMessages()
+    {
+        if (! array_key_exists('messages', $_SESSION) ) {
+            $_SESSION['messages'] = array();
+        }
+        return count($_SESSION['messages']) > 0;
+    }
+
+    public function displayMessages()
+    {
+        $messages = implode('<br />', $_SESSION['messages']);
+        $_SESSION['messages'] = array();
+        return $messages;
     }
 
     protected function _getControllerShortName()

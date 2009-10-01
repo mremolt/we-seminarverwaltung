@@ -4,6 +4,8 @@ require_once 'config/config.php';
 require_once 'library/autoload.php';
 require_once 'config/routes.php';
 
+session_start();
+date_default_timezone_set('Europe/Berlin');
 $route = library\Router::getInstance()->match(RELATIVE_URL);
 
 $controllerFile = 'controllers' . DIRECTORY_SEPARATOR . ucfirst($route['controller']) . 'Controller.php';

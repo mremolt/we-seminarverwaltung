@@ -1,0 +1,18 @@
+<?php if (! $benutzer->isValid() ): ?>
+    <ul>
+        <?php foreach ($benutzer->getErrors() as $e): ?>
+            <li style="color: #ff0000"><?php echo $e ?></li>
+        <?php endforeach; ?>
+    </ul>
+<?php endif; ?>
+
+<form action="<?php echo $save_url ?>" method="post">
+    <input type="hidden" name="id" value="<?php echo $benutzer->getId() ?>" />
+    Vorname: <input type="text" name="vorname" value="<?php echo $benutzer->getVorname() ?>" /><br />
+    Name: <input type="text" name="name" value="<?php echo $benutzer->getName() ?>" /><br />
+    E-Mail: <input type="text" name="email" value="<?php echo $benutzer->getEmail() ?>" /><br />
+    Passwort: <input type="password" name="passwort" value="<?php echo $benutzer->getPasswort() ?>" /><br />
+    <input type="submit" value="Benutzer speichern" />
+</form>
+
+<p><a href="<?php echo $this->urlFor('benutzer') ?>">zurück zur Übersicht</a>

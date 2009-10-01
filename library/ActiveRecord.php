@@ -22,17 +22,9 @@ abstract class ActiveRecord
      *
      * @param array $data
      */
-    public function __construct($data = array())
+    public function __construct(array $data = array())
     {
-        if ($data) {
-            foreach ($data as $k => $v) {
-                $setterName = 'set' . ucfirst($k);
-                // wenn ein ungültiges Attribut übergeben wurde (ohne Setter), ignoriere es
-                if (method_exists($this, $setterName)) {
-                    $this->$setterName($v);
-                }
-            }
-        }
+        $this->fromArray($data);
     }
 
     /**
@@ -81,6 +73,19 @@ abstract class ActiveRecord
             $values[$column] = $this->$getterName();
         }
         return $values;
+    }
+
+    public function fromArray(array $data = array())
+    {
+        if ($data) {
+            foreach ($data as $k => $v) {
+                $setterName = 'set' . ucfirst($k);
+                // wenn ein ungültiges Attribut übergeben wurde (ohne Setter), ignoriere es
+                if (method_exists($this, $setterName)) {
+                    $this->$setterName($v);
+                }
+            }
+        }
     }
 
     /**

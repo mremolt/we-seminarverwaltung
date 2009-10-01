@@ -36,6 +36,9 @@ class Seminar extends ActiveRecord
      */
     public function setTitel($titel)
     {
+        if (empty($titel)) {
+            $this->addError('titel', 'Das Feld Titel darf nich leer sein');
+        }
         $this->titel = $titel;
         return $this;
     }
@@ -48,6 +51,16 @@ class Seminar extends ActiveRecord
     public function getBeschreibung()
     {
         return $this->beschreibung;
+    }
+
+    /**
+     * Getter
+     *
+     * @return string
+     */
+    public function getBeschreibungFormatiert()
+    {
+        return nl2br($this->beschreibung);
     }
 
     /**
@@ -80,7 +93,12 @@ class Seminar extends ActiveRecord
      */
     public function setPreis($preis)
     {
-        $this->preis = $preis;
+        $preis = floatval($preis);
+        if ($preis <= 0.0) {
+            $this->addError('preis', 'Der Preis muss ein positiver Zahlenwert sein.');
+        } else {
+            $this->preis = $preis;
+        }
         return $this;
     }
 
@@ -102,6 +120,9 @@ class Seminar extends ActiveRecord
      */
     public function setKategorie($kategorie)
     {
+        if (empty($kategorie)) {
+            $this->addError('kategorie', 'Das Feld Kategorie darf nich leer sein');
+        }
         $this->kategorie = $kategorie;
         return $this;
     }
