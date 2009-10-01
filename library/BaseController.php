@@ -50,6 +50,8 @@ abstract class BaseController
 
     public function run($action, $params = array())
     {
+        $this->_preRun();
+
         $this->setParams($params);
         $this->_templateName = $action;
         
@@ -65,6 +67,9 @@ abstract class BaseController
             require_once PROJECT_DIRECTORY . DIRECTORY_SEPARATOR . 'views' .
                 DIRECTORY_SEPARATOR . 'layouts' . DIRECTORY_SEPARATOR .
                 $this->_layoutName . '.phtml';
+
+            // Post-Hook nur ausführen, wenn auch dieser Action ausgeführt wurde
+            $this->_postRun();
         } else {
             $controller = new \controllers\ErrorController();
             $controller->run('notfound', $this->getParams());
@@ -91,5 +96,21 @@ abstract class BaseController
         $search = array('controllers\\', 'controller');
         $replace = array('', '');
         return str_replace($search, $replace, strtolower(get_class($this)));
+    }
+
+    /**
+     * Hook-Methode
+     */
+    protected function _preRun()
+    {
+
+    }
+
+    /**
+     * Hook-Methode
+     */
+    protected function _postRun()
+    {
+
     }
 }

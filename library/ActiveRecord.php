@@ -127,6 +127,8 @@ abstract class ActiveRecord
      */
     public function save()
     {
+        $this->_preSave();
+
         // nur speichern, wenn alle Daten im Objekt valide sind
         if ($this->isValid()) {
             if ($this->getId() > 0) {
@@ -135,6 +137,8 @@ abstract class ActiveRecord
                 $this->_insert();
             }
         }
+
+        $this->_postSave();
         return $this;
     }
 
@@ -145,6 +149,8 @@ abstract class ActiveRecord
      */
     public function delete()
     {
+        $this->_preDelete();
+
         // nur löschen, wenn das Objekt auch schon gespeichert ist
         if ($this->getId() > 0) {
             $sql = 'DELETE FROM ' . static::getTableName() . ' WHERE id = ?';
@@ -153,6 +159,8 @@ abstract class ActiveRecord
             // markiere das Objekt als nicht in der Datenbank gespeichert
             $this->setId(0);
         }
+
+        $this->_postDelete();
         return $this;
     }
 
@@ -278,6 +286,8 @@ abstract class ActiveRecord
      */
     protected function _insert()
     {
+        $this->_preInsert();
+
         $columns = static::getTableColumns(false);
         $columnSql = implode(', ', $columns);
         // Die benannten Parameter in SQL benötigen einen : vor dem Namen,
@@ -298,6 +308,8 @@ abstract class ActiveRecord
         
         // da das Objekt nun gespeichert ist, muss auch das Attribut ID gesetzt sein.
         $this->setId(intval($db->lastInsertId()));
+
+        $this->_postInsert();
     }
 
     /**
@@ -305,6 +317,8 @@ abstract class ActiveRecord
      */
     protected function _update()
     {
+        $this->_preUpdate();
+
         $columns = static::getTableColumns(false);
 
         $columnStatements = array();
@@ -321,6 +335,72 @@ abstract class ActiveRecord
 
         $statement = Database::getInstance()->prepare($sql);
         $statement->execute($this->toArray());
+
+        $this->_postUpdate();
+    }
+
+    /**
+     * Hook-Methode
+     */
+    protected function _preSave()
+    {
+
+    }
+
+    /**
+     * Hook-Methode
+     */
+    protected function _postSave()
+    {
+
+    }
+
+    /**
+     * Hook-Methode
+     */
+    protected function _preInsert()
+    {
+
+    }
+
+    /**
+     * Hook-Methode
+     */
+    protected function _postInsert()
+    {
+
+    }
+
+    /**
+     * Hook-Methode
+     */
+    protected function _preUpdate()
+    {
+
+    }
+
+    /**
+     * Hook-Methode
+     */
+    protected function _postUpdate()
+    {
+
+    }
+
+    /**
+     * Hook-Methode
+     */
+    protected function _preDelete()
+    {
+
+    }
+
+    /**
+     * Hook-Methode
+     */
+    protected function _postDelete()
+    {
+
     }
 
     /**
