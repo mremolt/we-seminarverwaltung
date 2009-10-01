@@ -1,0 +1,27 @@
+<table border="1">
+    <tr>
+        <th>Seminar</th>
+        <th>Raum</th>
+        <th>Beginn</th>
+        <th>Ende</th>
+        <th>editieren</th>
+        <th>löschen</th>
+    </tr>
+    <?php foreach ($seminartermine as $s): ?>
+        <tr>
+            <td><?php echo $s->getSeminar()->getTitel() ?></td>
+            <td><?php echo $s->getRaum() ?></td>
+            <td><?php echo $s->getBeginnFormatiert() ?></td>
+            <td><?php echo $s->getEndeFormatiert() ?></td>
+            <td>
+                <a href="<?php echo $this->urlFor('seminartermin', 'editieren') ?>?id=<?php echo $s->getId() ?>">editieren</a>
+            </td>
+            <td>
+                <a href="<?php echo $this->urlFor('seminartermin', 'loeschen') ?>?id=<?php echo $s->getId() ?>">löschen</a>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+</table>
+<p>
+    <a href="<?php echo $this->urlFor('seminartermin', 'neu') ?>">Neuen Seminartermin eintragen</a>
+</p>

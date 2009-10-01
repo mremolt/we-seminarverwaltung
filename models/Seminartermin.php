@@ -30,6 +30,16 @@ class Seminartermin extends ActiveRecord
     }
 
     /**
+     * Getter
+     *
+     * @return string
+     */
+    public function getBeginnFormatiert()
+    {
+        return strftime('%d.%m.%Y', strtotime($this->beginn));
+    }
+
+    /**
      * Setter
      *
      * @param string $beginn
@@ -37,6 +47,9 @@ class Seminartermin extends ActiveRecord
      */
     public function setBeginn($beginn)
     {
+        if ( strtotime($beginn) === false ) {
+            $this->addError('beginn', 'Das Feld Beginn enthält ein ungültiges Datum');
+        }
         $this->beginn = $beginn;
         return $this;
     }
@@ -52,6 +65,16 @@ class Seminartermin extends ActiveRecord
     }
 
     /**
+     * Getter
+     *
+     * @return string
+     */
+    public function getEndeformatiert()
+    {
+        return strftime('%d.%m.%Y', strtotime($this->ende));
+    }
+
+    /**
      * Setter
      *
      * @param string $ende
@@ -59,7 +82,13 @@ class Seminartermin extends ActiveRecord
      */
     public function setEnde($ende)
     {
+        if ( strtotime($ende) === false ) {
+            $this->addError('ende', 'Das Feld Ende enthält ein ungültiges Datum');
+        } elseif (strtotime($ende) <= strtotime($this->getBeginn())) {
+            $this->addError('ende', 'Das Feld Ende liegt zeitlich vor dem Beginn');
+        }
         $this->ende = $ende;
+        return $this;
     }
 
     /**
@@ -80,7 +109,11 @@ class Seminartermin extends ActiveRecord
      */
     public function setRaum($raum)
     {
+        if (empty($raum)) {
+            $this->addError('raum', 'Das Feld Raum darf nich leer sein');
+        }
         $this->raum = $raum;
+        return $this;
     }
 
     /**
@@ -102,6 +135,7 @@ class Seminartermin extends ActiveRecord
     public function setSeminar(Seminar $seminar)
     {
         $this->seminar_id = $seminar->getId();
+        return $this;
     }
 
     /**

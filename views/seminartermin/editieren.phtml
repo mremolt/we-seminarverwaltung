@@ -1,0 +1,25 @@
+<?php if (! $seminartermin->isValid() ): ?>
+    <ul>
+        <?php foreach ($seminartermin->getErrors() as $e): ?>
+            <li style="color: #ff0000"><?php echo $e ?></li>
+        <?php endforeach; ?>
+    </ul>
+<?php endif; ?>
+
+<form action="<?php echo $save_url ?>" method="post">
+    <input type="hidden" name="id" value="<?php echo $seminartermin->getId() ?>" />
+    
+    Seminar: 
+    <select name="seminar_id">
+        <?php foreach ($seminare as $s): ?>
+            <option value="<?php echo $s->getId(); ?>" <?php if ($s->getId() == $seminar_id) echo 'selected="selected"' ?> ><?php echo $s->getTitel(); ?></option>
+        <?php endforeach; ?>
+    </select><br />
+
+    Raum: <input type="text" name="raum" value="<?php echo $seminartermin->getRaum() ?>" /><br />
+    Beginn (YYYY-MM-DD): <input type="text" name="beginn" value="<?php echo $seminartermin->getBeginn() ?>" /><br />
+    Ende (YYYY-MM-DD): <input type="text" name="ende" value="<?php echo $seminartermin->getEnde() ?>" /><br />
+    <input type="submit" value="Seminartermin speichern" />
+</form>
+
+<p><a href="<?php echo $this->urlFor('seminartermin') ?>">zurück zur Übersicht</a>
