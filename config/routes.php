@@ -1,11 +1,6 @@
 <?php
 
-$routesMapper = new Horde_Routes_Mapper();
+$router = library\Router::getInstance();
 
 // hier werden alle Routen definiert
-
-// Die Standardrouten
-$routesMapper->connect('/', array('controller' => 'index', 'action' => 'index'));
-$routesMapper->connect(':controller/:action/:id');
-
-$routesMapper->createRegs(library\BaseController::getValidControllerUrls());
+$router->connect('/bla/blub', 'seminar', 'index');
