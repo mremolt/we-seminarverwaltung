@@ -21,6 +21,10 @@ table {
     width: 95%;
 }
 
+th {
+    background-color: #CFDCED;
+}
+
 p, ul, form {
     margin-left: 20px;
     padding-left: 0px;
@@ -41,6 +45,14 @@ body {
 #corporate {
     position: absolute;
     left: 50px;
+}
+
+div#fuss {
+    font-size: 10px;
+}
+
+ul.text {
+    padding-left: 20px;
 }
 
 
