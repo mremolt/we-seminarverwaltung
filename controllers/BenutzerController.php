@@ -18,7 +18,10 @@ class BenutzerController extends BaseController
 
     public function indexAction()
     {
-        $this->setcontext('benutzer', Benutzer::findAll());
+        $paging_data = $this->_getPagingData('Benutzer', $this->urlFor('benutzer', 'index'));
+        extract($paging_data);
+
+        $this->setcontext('benutzer', Benutzer::findAll($order_by, $asc, $limit, $offset));
     }
 
     public function neuAction()

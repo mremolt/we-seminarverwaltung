@@ -140,4 +140,45 @@ abstract class BaseController
     {
 
     }
+
+    /**
+     * Gibt die für das Paging relavanten Daten zurück und setzt sie auch gleich im Kontext
+     *
+     * @param string $className
+     * @param string $baseUrl
+     * @return array
+     */
+    protected function _getPagingData($className, $baseUrl)
+    {
+        $order_by = array_key_exists('order_by', $_GET) ? $_GET['order_by'] : false;
+        $asc      = (array_key_exists('asc', $_GET) && $_GET['asc'] === 'false') ? false : true;
+        $page     = array_key_exists('page', $_GET) ? intval($_GET['page']) : 1;
+
+        $limit = ELEMENTS_PER_PAGE;
+        $offset = (ELEMENTS_PER_PAGE * $page) - ELEMENTS_PER_PAGE;
+
+        $paging_url  = $baseUrl . '?';
+        $paging_url .= $order_by ? 'order_by=' . $order_by . '&' : '';
+        $paging_url .= $asc ? 'asc=true&' : 'asc=false&';
+        $paging_url .= 'page=';
+
+        $className = 'models\\' . $className;
+        $number_of_pages = ceil($className::count() / ELEMENTS_PER_PAGE);
+
+        // Kontext hier befüllen, brauchen wir sowieso
+        $this->setContext('asc', $asc);
+        $this->setContext('page', $page);
+        $this->setContext('paging_url', $paging_url);
+        $this->setContext('number_of_pages', $number_of_pages);
+
+        return array(
+            'order_by'        => $order_by,
+            'asc'             => $asc,
+            'page'            => $page,
+            'limit'           => $limit,
+            'offset'          => $offset,
+            'paging_url'      => $paging_url,
+            'number_of_pages' => $number_of_pages,
+        );
+    }
 }

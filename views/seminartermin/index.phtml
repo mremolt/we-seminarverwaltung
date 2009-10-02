@@ -1,9 +1,11 @@
+<?php require 'views/partials/pager.phtml' ?>
+
 <table border="1">
     <tr>
-        <th>Seminar</th>
-        <th>Raum</th>
-        <th>Beginn</th>
-        <th>Ende</th>
+        <th><a href="<?php echo $this->urlFor('seminartermin', 'index') ?>?order_by=seminar_id&asc=<?php echo $asc ? 'false' : 'true' ?>">Seminar</a></th>
+        <th><a href="<?php echo $this->urlFor('seminartermin', 'index') ?>?order_by=raum&asc=<?php echo $asc ? 'false' : 'true' ?>">Raum</a></th>
+        <th><a href="<?php echo $this->urlFor('seminartermin', 'index') ?>?order_by=beginn&asc=<?php echo $asc ? 'false' : 'true' ?>">Beginn</a></th>
+        <th><a href="<?php echo $this->urlFor('seminartermin', 'index') ?>?order_by=ende&asc=<?php echo $asc ? 'false' : 'true' ?>">Ende</a></th>
         <th>Dauer</th>
         <th>Anzahl Teilnehmer</th>
         <th>editieren</th>
@@ -30,6 +32,9 @@
         </tr>
     <?php endforeach; ?>
 </table>
+
+<?php require 'views/partials/pager.phtml' ?>
+
 <p>
     <a href="<?php echo $this->urlFor('seminartermin', 'neu') ?>">Neuen Seminartermin eintragen</a>
 </p>

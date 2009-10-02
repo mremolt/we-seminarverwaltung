@@ -19,7 +19,10 @@ class SeminarterminController extends BaseController
 
     public function indexAction()
     {
-        $seminartermine = Seminartermin::findAll();
+        $paging_data = $this->_getPagingData('Seminartermin', $this->urlFor('seminartermin', 'index'));
+        extract($paging_data);
+
+        $seminartermine = Seminartermin::findAll($order_by, $asc, $limit, $offset);
         $this->setContext('seminartermine', $seminartermine);
         $this->setContext('title', 'Liste aller Seminartermine');
     }

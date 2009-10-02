@@ -1,9 +1,11 @@
+<?php require 'views/partials/pager.phtml' ?>
+
 <table border="1">
     <tr>
-        <th>Vorname</th>
-        <th>Name</th>
-        <th>E-Mail-Adresse</th>
-        <th>Registiert seit</th>
+        <th><a href="<?php echo $this->urlFor('benutzer', 'index') ?>?order_by=vorname&asc=<?php echo $asc ? 'false' : 'true' ?>">Vorname</a></th>
+        <th><a href="<?php echo $this->urlFor('benutzer', 'index') ?>?order_by=name&asc=<?php echo $asc ? 'false' : 'true' ?>">Name</a></th>
+        <th><a href="<?php echo $this->urlFor('benutzer', 'index') ?>?order_by=email&asc=<?php echo $asc ? 'false' : 'true' ?>">E-Mail-Adresse</a></th>
+        <th><a href="<?php echo $this->urlFor('benutzer', 'index') ?>?order_by=registriert_seit&asc=<?php echo $asc ? 'false' : 'true' ?>">Registiert seit</a></th>
         <th>editieren</th>
         <th>löschen</th>
     </tr>
@@ -22,6 +24,9 @@
         </tr>
     <?php endforeach; ?>
 </table>
+
+<?php require 'views/partials/pager.phtml' ?>
+
 <p>
     <a href="<?php echo $this->urlFor('benutzer', 'neu') ?>">Neuen Benutzer eintragen</a>
 </p>
