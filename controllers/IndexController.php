@@ -1,7 +1,7 @@
 <?php
 
 namespace controllers;
-use library\BaseController;
+use library\BaseController, library\Auth;
 
 /**
  * Description of IndexController
@@ -13,6 +13,11 @@ class IndexController extends BaseController
 {
     public function indexAction()
     {
-        
+        $this->setcontext('title', 'Startseite');
+    }
+
+    public function infoAction()
+    {
+        Auth::requireLogin();
     }
 }

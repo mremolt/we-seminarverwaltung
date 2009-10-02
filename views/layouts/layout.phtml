@@ -15,14 +15,26 @@
             <h1>Die Seminarverwaltung - <?php echo $title ?></h1>
             <ul>
                 <li style="display: inline;">
-                    <a href="<?php echo $this->urlFor('seminar') ?>">Seminare</a> |
+                    <a href="<?php echo $this->urlFor() ?>">Startseite</a> |
                 </li>
-                <li style="display: inline;">
-                    <a href="<?php echo $this->urlFor('seminartermin') ?>">Seminartermine</a> |
-                </li>
-                <li style="display: inline;">
-                    <a href="<?php echo $this->urlFor('benutzer') ?>">Benutzer</a>
-                </li>
+                <?php if (\library\Auth::isLoggedIn()): ?>
+                    <li style="display: inline;">
+                        <a href="<?php echo $this->urlFor('seminar') ?>">Seminare</a> |
+                    </li>
+                    <li style="display: inline;">
+                        <a href="<?php echo $this->urlFor('seminartermin') ?>">Seminartermine</a> |
+                    </li>
+                    <li style="display: inline;">
+                        <a href="<?php echo $this->urlFor('benutzer') ?>">Benutzer</a> | 
+                    </li>
+                    <li style="display: inline;">
+                        <a href="<?php echo $this->urlFor('auth', 'logout') ?>">ausloggen</a>
+                    </li>
+                <?php else: ?>
+                    <li style="display: inline;">
+                        <a href="<?php echo $this->urlFor('auth', 'login') ?>">einloggen</a>
+                    </li>
+                <?php endif; ?>
             </ul>
         </div>
             <?php if ($this->hasMessages() ): ?>

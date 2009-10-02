@@ -233,8 +233,7 @@ class Seminartermin extends ActiveRecord
      */
     public function countTeilnehmer()
     {
-        // TODO: Lösung, die weniger Performance verschwendet
-        return count($this->getTeilnehmer());
+        return Benutzer::countBySeminartermin($this);
     }
 
     /**

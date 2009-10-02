@@ -261,6 +261,15 @@ class Benutzer extends ActiveRecord
         return $statement->fetchAll();
     }
 
+    public static function countBySeminartermin(Seminartermin $seminartermin)
+    {
+        $sql = 'SELECT COUNT(be.id) as count FROM benutzer be JOIN nimmt_teil nt ON be.id = nt.benutzer_id WHERE nt.seminartermin_id = ?';
+        $statement = Database::getInstance()->prepare($sql);
+        $statement->execute(array( $seminartermin->getId() ));
+        $data = $statement->fetch();
+        return $data['count'];
+    }
+
     /**
      * Findet Benutzer, die nicht an einem Seminartermin teilnehmen über die Zwischentabelle nimmt_teil
      *

@@ -1,7 +1,7 @@
 <?php
 
 namespace controllers;
-use library\BaseController;
+use library\BaseController, library\Auth;
 use models\Seminartermin, models\Seminar, models\Benutzer;
 
 /**
@@ -12,6 +12,11 @@ use models\Seminartermin, models\Seminar, models\Benutzer;
  */
 class SeminarterminController extends BaseController
 {
+    public function _preRun()
+    {
+        Auth::requireLogin();
+    }
+
     public function indexAction()
     {
         $seminartermine = Seminartermin::findAll();

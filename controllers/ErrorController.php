@@ -4,7 +4,7 @@ namespace controllers;
 use library\BaseController;
 
 /**
- * Description of IndexController
+ * Description of ErrorController
  *
  * @author Marc Remolt <m.remolt@webmasters.de>
  * @package controllers

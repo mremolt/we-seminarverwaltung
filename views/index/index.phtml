@@ -1,7 +1,18 @@
 <h2>Willkommen in der Seminarverwaltung</h2>
-<p>Hier können Sie:</p>
+<h3>Hier können Sie:</h3>
 <ul>
     <li>Seminare bearbeiten</li>
     <li>Seminartermine bearbeiten</li>
     <li>Benutzer bearbeiten</li>
 </ul>
+
+<?php if (! \library\Auth::isLoggedIn()): ?>
+    <h3>Login:</h3>
+    <form action="<?php echo $this->urlFor('auth', 'login') ?>" method="post">
+        E-Mail-Adresse:
+        <input type="text" name="email" /><br />
+        Passwort:
+        <input type="password" name="passwort"<br />
+        <input type="submit" value="einloggen" />
+    </form>
+<?php endif; ?>

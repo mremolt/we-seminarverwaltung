@@ -96,9 +96,9 @@ class Seminar extends ActiveRecord
         $preis = floatval($preis);
         if ($preis <= 0.0) {
             $this->addError('preis', 'Der Preis muss ein positiver Zahlenwert sein.');
-        } else {
-            $this->preis = $preis;
         }
+        $this->preis = $preis;
+
         return $this;
     }
 
@@ -172,6 +172,6 @@ class Seminar extends ActiveRecord
      */
     public function __toString()
     {
-        return get_called_class() .  ': ' . $this->getTitel() . ' (Preis: ' . $this->getPreis() . '€)';
+        return $this->getTitel() . ' (Preis: ' . $this->getPreis() . ' €)';
     }
 }

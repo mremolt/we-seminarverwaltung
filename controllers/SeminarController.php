@@ -1,7 +1,7 @@
 <?php
 
 namespace controllers;
-use library\BaseController, models\Seminar;
+use library\BaseController, models\Seminar, library\Auth;
 
 /**
  * Description of SeminarController
@@ -11,6 +11,11 @@ use library\BaseController, models\Seminar;
  */
 class SeminarController extends BaseController
 {
+    public function _preRun()
+    {
+        Auth::requireLogin();
+    }
+
     public function indexAction()
     {
         $seminare = Seminar::findAll();
@@ -48,6 +53,7 @@ class SeminarController extends BaseController
         }
         
         $this->_templateName = 'neu';
+        $this->setContext('title', 'Seminar "' . $seminar . '" editieren');
         $this->setContext('seminar', $seminar);
         $this->setContext('save_url', $this->urlFor('seminar', 'editieren'));
     }

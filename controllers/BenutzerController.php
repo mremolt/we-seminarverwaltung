@@ -1,7 +1,7 @@
 <?php
 
 namespace controllers;
-use library\BaseController, models\Benutzer;
+use library\BaseController, models\Benutzer, library\Auth;
 
 /**
  * Description of BenutzerController
@@ -11,6 +11,11 @@ use library\BaseController, models\Benutzer;
  */
 class BenutzerController extends BaseController
 {
+    public function _preRun()
+    {
+        Auth::requireLogin();
+    }
+
     public function indexAction()
     {
         $this->setcontext('benutzer', Benutzer::findAll());
