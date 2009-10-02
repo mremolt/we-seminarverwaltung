@@ -88,25 +88,50 @@
 		</div>
 		<div class="info-box-body">			
 			<div class="method-summary">
-																				<div class="method-definition">
+																												<div class="method-definition">
 					static 						<span class="method-result">array</span>
 										<a href="#findByBenutzer" title="details" class="method-name">findByBenutzer</a>
 											(<span class="var-type"><a href="../models/Benutzer.html">Benutzer</a></span>&nbsp;<span class="var-name">$benutzer</span>)
 									</div>
-																																																																																																								
+																																																																																																																																																
 												<div class="method-definition">
 											<span class="method-result"><a href="../models/Seminartermin.html">Seminartermin</a></span>
 										<a href="#addTeilnehmer" title="details" class="method-name">addTeilnehmer</a>
 											(<span class="var-type"><a href="../models/Benutzer.html">Benutzer</a></span>&nbsp;<span class="var-name">$teilnehmer</span>)
 									</div>
+																<div class="method-definition">
+											<span class="method-result">integer</span>
+										<a href="#countTeilnehmer" title="details" class="method-name">countTeilnehmer</a>
+										()
+									</div>
 																								<div class="method-definition">
-											<span class="method-result">string</span>
+											<span class="method-result"><a href="../library/DateTime.html">DateTime</a></span>
 										<a href="#getBeginn" title="details" class="method-name">getBeginn</a>
 										()
 									</div>
 																<div class="method-definition">
 											<span class="method-result">string</span>
+										<a href="#getBeginnFormatiert" title="details" class="method-name">getBeginnFormatiert</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">integer</span>
+										<a href="#getDauer" title="details" class="method-name">getDauer</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result"><a href="../library/DateTime.html">DateTime</a></span>
 										<a href="#getEnde" title="details" class="method-name">getEnde</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">string</span>
+										<a href="#getEndeformatiert" title="details" class="method-name">getEndeformatiert</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">array</span>
+										<a href="#getNichtTeilnehmer" title="details" class="method-name">getNichtTeilnehmer</a>
 										()
 									</div>
 																<div class="method-definition">
@@ -128,6 +153,11 @@
 											<span class="method-result">array</span>
 										<a href="#getTeilnehmer" title="details" class="method-name">getTeilnehmer</a>
 										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result"><a href="../models/Seminartermin.html">Seminartermin</a></span>
+										<a href="#removeTeilnehmer" title="details" class="method-name">removeTeilnehmer</a>
+											(<span class="var-type"><a href="../models/Benutzer.html">Benutzer</a></span>&nbsp;<span class="var-name">$teilnehmer</span>)
 									</div>
 																<div class="method-definition">
 											<span class="method-result"><a href="../models/Seminartermin.html">Seminartermin</a></span>
@@ -316,7 +346,7 @@
 <div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">static method findByBenutzer</span> (line <span class="line-number">163</span>)
+		<span class="method-title">static method findByBenutzer</span> (line <span class="line-number">263</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -348,7 +378,7 @@
 <div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">addTeilnehmer</span> (line <span class="line-number">123</span>)
+		<span class="method-title">addTeilnehmer</span> (line <span class="line-number">197</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -373,8 +403,32 @@
 		
 			
 	</div>
-<a name="methodgetBeginn" id="getBeginn"><!-- --></a>
+<a name="methodcountTeilnehmer" id="countTeilnehmer"><!-- --></a>
 <div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">countTeilnehmer</span> (line <span class="line-number">234</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Zählt die Teilnehmer eines Seminartermins</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">integer</span>
+		<span class="method-name">
+			countTeilnehmer
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetBeginn" id="getBeginn"><!-- --></a>
+<div class="oddrow">
 	
 	<div class="method-header">
 		<span class="method-title">getBeginn</span> (line <span class="line-number">27</span>)
@@ -387,7 +441,7 @@
 			</ul>
 	
 	<div class="method-signature">
-		<span class="method-result">string</span>
+		<span class="method-result"><a href="../library/DateTime.html">DateTime</a></span>
 		<span class="method-name">
 			getBeginn
 		</span>
@@ -397,11 +451,11 @@
 		
 			
 	</div>
-<a name="methodgetEnde" id="getEnde"><!-- --></a>
-<div class="oddrow">
+<a name="methodgetBeginnFormatiert" id="getBeginnFormatiert"><!-- --></a>
+<div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">getEnde</span> (line <span class="line-number">49</span>)
+		<span class="method-title">getBeginnFormatiert</span> (line <span class="line-number">42</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -413,6 +467,54 @@
 	<div class="method-signature">
 		<span class="method-result">string</span>
 		<span class="method-name">
+			getBeginnFormatiert
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetDauer" id="getDauer"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">getDauer</span> (line <span class="line-number">141</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Gibt die Dauer eines Seminartermins in Tagen aus</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">integer</span>
+		<span class="method-name">
+			getDauer
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetEnde" id="getEnde"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">getEnde</span> (line <span class="line-number">69</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Getter</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../library/DateTime.html">DateTime</a></span>
+		<span class="method-name">
 			getEnde
 		</span>
 				()
@@ -421,11 +523,59 @@
 		
 			
 	</div>
-<a name="methodgetRaum" id="getRaum"><!-- --></a>
+<a name="methodgetEndeformatiert" id="getEndeformatiert"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">getEndeformatiert</span> (line <span class="line-number">84</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Getter</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getEndeformatiert
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetNichtTeilnehmer" id="getNichtTeilnehmer"><!-- --></a>
 <div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">getRaum</span> (line <span class="line-number">70</span>)
+		<span class="method-title">getNichtTeilnehmer</span> (line <span class="line-number">186</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Gibt die Benutzer zurück, nich noch nicht für den Seminartermin gebucht sind</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			getNichtTeilnehmer
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetRaum" id="getRaum"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">getRaum</span> (line <span class="line-number">116</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -446,10 +596,10 @@
 			
 	</div>
 <a name="methodgetSeminar" id="getSeminar"><!-- --></a>
-<div class="oddrow">
+<div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">getSeminar</span> (line <span class="line-number">91</span>)
+		<span class="method-title">getSeminar</span> (line <span class="line-number">154</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -470,10 +620,10 @@
 			
 	</div>
 <a name="methodgetSeminar_id" id="getSeminar_id"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">getSeminar_id</span> (line <span class="line-number">182</span>)
+		<span class="method-title">getSeminar_id</span> (line <span class="line-number">282</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -494,10 +644,10 @@
 			
 	</div>
 <a name="methodgetTeilnehmer" id="getTeilnehmer"><!-- --></a>
-<div class="oddrow">
+<div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">getTeilnehmer</span> (line <span class="line-number">112</span>)
+		<span class="method-title">getTeilnehmer</span> (line <span class="line-number">176</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -517,11 +667,40 @@
 		
 			
 	</div>
+<a name="methodremoveTeilnehmer" id="removeTeilnehmer"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">removeTeilnehmer</span> (line <span class="line-number">218</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Entfernt einen Teilnehmer aus dem Seminartermin</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../models/Seminartermin.html">Seminartermin</a></span>
+		<span class="method-name">
+			removeTeilnehmer
+		</span>
+					(<span class="var-type"><a href="../models/Benutzer.html">Benutzer</a></span>&nbsp;<span class="var-name">$teilnehmer</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"><a href="../models/Benutzer.html">Benutzer</a></span>
+				<span class="var-name">$teilnehmer</span>			</li>
+				</ul>
+		
+			
+	</div>
 <a name="methodsetBeginn" id="setBeginn"><!-- --></a>
 <div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">setBeginn</span> (line <span class="line-number">38</span>)
+		<span class="method-title">setBeginn</span> (line <span class="line-number">53</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -550,7 +729,7 @@
 <div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">setEnde</span> (line <span class="line-number">60</span>)
+		<span class="method-title">setEnde</span> (line <span class="line-number">95</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -579,7 +758,7 @@
 <div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">setRaum</span> (line <span class="line-number">81</span>)
+		<span class="method-title">setRaum</span> (line <span class="line-number">127</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -608,7 +787,7 @@
 <div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">setSeminar</span> (line <span class="line-number">102</span>)
+		<span class="method-title">setSeminar</span> (line <span class="line-number">165</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -637,7 +816,7 @@
 <div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">setSeminar_id</span> (line <span class="line-number">193</span>)
+		<span class="method-title">setSeminar_id</span> (line <span class="line-number">293</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -666,7 +845,7 @@
 <div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">__toString</span> (line <span class="line-number">143</span>)
+		<span class="method-title">__toString</span> (line <span class="line-number">244</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -709,7 +888,7 @@
 
 
 	<p class="notes" id="credit">
-		Documentation generated on Wed, 30 Sep 2009 18:01:07 +0200 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+		Documentation generated on Fri, 02 Oct 2009 17:17:34 +0200 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
 	</p>
 	</div></body>
 </html>

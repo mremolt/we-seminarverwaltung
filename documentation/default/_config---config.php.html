@@ -34,13 +34,69 @@
 									<span class="disabled">Constants</span>
 											</div>
 		<div class="info-box-body">	
-			<a name="definePROJECT_DIRECTORY"><!-- --></a>
+			<a name="defineDB_DSN"><!-- --></a>
 <div class="oddrow">
 	
 	<div>
 		<span class="const-title">
-			<span class="const-name">PROJECT_DIRECTORY</span> = dirname($_SERVER['SCRIPT_FILENAME'])
-			(line <span class="line-number">2</span>)
+			<span class="const-name">DB_DSN</span> = 'mysql:host=127.0.0.1;dbname=seminarverwaltung'
+			(line <span class="line-number">13</span>)
+		</span>
+	</div>
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	
+		
+</div>
+<a name="defineDB_PASS"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<span class="const-title">
+			<span class="const-name">DB_PASS</span> = ''
+			(line <span class="line-number">15</span>)
+		</span>
+	</div>
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	
+		
+</div>
+<a name="defineDB_USER"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<span class="const-title">
+			<span class="const-name">DB_USER</span> = 'root'
+			(line <span class="line-number">14</span>)
+		</span>
+	</div>
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	
+		
+</div>
+<a name="defineELEMENTS_PER_PAGE"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<span class="const-title">
+			<span class="const-name">ELEMENTS_PER_PAGE</span> = 4
+			(line <span class="line-number">18</span>)
+		</span>
+	</div>
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	
+		
+</div>
+<a name="definePROJECT_DIRECTORY"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<span class="const-title">
+			<span class="const-name">PROJECT_DIRECTORY</span> = dirname(dirname(__FILE__))
+			(line <span class="line-number">4</span>)
 		</span>
 	</div>
 	
@@ -54,7 +110,7 @@
 	<div>
 		<span class="const-title">
 			<span class="const-name">PROJECT_URL</span> = dirname($_SERVER['SCRIPT_NAME'])
-			(line <span class="line-number">3</span>)
+			(line <span class="line-number">7</span>)
 		</span>
 	</div>
 	
@@ -67,8 +123,8 @@
 	
 	<div>
 		<span class="const-title">
-			<span class="const-name">RELATIVE_URL</span> = str_replace(PROJECT_URL,'',$_SERVER['REQUEST_URI'])
-			(line <span class="line-number">4</span>)
+			<span class="const-name">RELATIVE_URL</span> = str_replace(PROJECT_URL,'',parse_url($_SERVER['REQUEST_URI'],PHP_URL_PATH))
+			(line <span class="line-number">10</span>)
 		</span>
 	</div>
 	
@@ -82,7 +138,7 @@
 	
 	
 	<p class="notes" id="credit">
-		Documentation generated on Wed, 30 Sep 2009 18:01:06 +0200 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+		Documentation generated on Fri, 02 Oct 2009 17:17:32 +0200 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
 	</p>
 	</div></body>
 </html>

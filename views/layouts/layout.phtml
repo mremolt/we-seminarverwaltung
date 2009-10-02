@@ -28,7 +28,10 @@
                         <a href="<?php echo $this->urlFor('benutzer') ?>">Benutzer</a> | 
                     </li>
                     <li style="display: inline;">
-                        <a href="<?php echo $this->urlFor('auth', 'logout') ?>">ausloggen</a>
+                        <a href="<?php echo $this->urlFor('auth', 'logout') ?>">ausloggen</a> |
+                    </li>
+                    <li style="display: inline;">
+                        <a href="<?php echo $this->urlFor('documentation', 'index.html') ?>" target="_blank">API-Dokumentation</a>
                     </li>
                 <?php else: ?>
                     <li style="display: inline;">

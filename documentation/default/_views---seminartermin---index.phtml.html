@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>Docs for page index.phtml</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+		</head>
+		<body>
+			<div class="page-body">			
+<h2 class="file-name">/views/seminartermin/index.phtml</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+									<a href="#sec-includes">Includes</a>
+												</div>
+	<div class="info-box-body">	
+		<!-- ========== Info from phpDoc block ========= -->
+		
+			</div>
+</div>
+		
+
+	<a name="sec-includes"></a>	
+	<div class="info-box">
+		<div class="info-box-title">Includes</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+						<span class="disabled">Includes</span>
+														</div>
+		<div class="info-box-body">	
+			<a name="_views/partials/pager_phtml?>
+
+<table border=1>
+    <tr>
+        <th><a href=<?php echo$this->urlFor(seminartermin,index)?>?order_by=seminar_id&asc=<?php echo$asc?false:true?>>Seminar</a></th>
+        <th><a href=<?php echo$this->urlFor(seminartermin,index)?>?order_by=raum&asc=<?php echo$asc?false:true?>>Raum</a></th>
+        <th><a href=<?php echo$this->urlFor(seminartermin,index)?>?order_by=beginn&asc=<?php echo$asc?false:true?>>Beginn</a></th>
+        <th><a href=<?php echo$this->urlFor(seminartermin,index)?>?order_by=ende&asc=<?php echo$asc?false:true?>>Ende</a></th>
+        <th>Dauer</th>
+        <th>Anzahl Teilnehmer</th>
+        <th>editieren</th>
+        <th>löschen</th>
+    </tr>
+    <?php foreach($seminartermineas$s):?>
+        <tr>
+            <td><?php echo$s->getSeminar()->getTitel()?></td>
+            <td><?php echo$s->getRaum()?></td>
+            <td><?php echo$s->getBeginnFormatiert()?></td>
+            <td><?php echo$s->getEndeFormatiert()?></td>
+            <td><?php echo$s->getDauer()->format(%d)+1?> Tag(e)</td>
+            <td><?php echo$s->countTeilnehmer()?></td>
+            <td>
+                <a href=<?php echo$this->urlFor(seminartermin,editieren)?>?id=<?php echo$s->getId()?>>editieren</a>
+            </td>
+            <td>
+                <?php if($s->countTeilnehmer()===0):?>
+                    <a href=<?php echo$this->urlFor(seminartermin,loeschen)?>?id=<?php echo$s->getId()?>>löschen</a>
+                <?php else:?>
+                    nicht möglich
+                <?php endif"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<span class="include-title">
+			<span class="include-type">require</span>
+			(<span class="include-name"><a href="../default/_views---partials---pager.phtml.html">'views/partials/pager.phtml'?>
+
+<table border="1">
+    <tr>
+        <th><a href="<?php echo$this->urlFor('seminartermin','index')?>?order_by=seminar_id&asc=<?php echo$asc?'false':'true'?>">Seminar</a></th>
+        <th><a href="<?php echo$this->urlFor('seminartermin','index')?>?order_by=raum&asc=<?php echo$asc?'false':'true'?>">Raum</a></th>
+        <th><a href="<?php echo$this->urlFor('seminartermin','index')?>?order_by=beginn&asc=<?php echo$asc?'false':'true'?>">Beginn</a></th>
+        <th><a href="<?php echo$this->urlFor('seminartermin','index')?>?order_by=ende&asc=<?php echo$asc?'false':'true'?>">Ende</a></th>
+        <th>Dauer</th>
+        <th>Anzahl Teilnehmer</th>
+        <th>editieren</th>
+        <th>löschen</th>
+    </tr>
+    <?php foreach($seminartermineas$s):?>
+        <tr>
+            <td><?php echo$s->getSeminar()->getTitel()?></td>
+            <td><?php echo$s->getRaum()?></td>
+            <td><?php echo$s->getBeginnFormatiert()?></td>
+            <td><?php echo$s->getEndeFormatiert()?></td>
+            <td><?php echo$s->getDauer()->format('%d')+1?> Tag(e)</td>
+            <td><?php echo$s->countTeilnehmer()?></td>
+            <td>
+                <a href="<?php echo$this->urlFor('seminartermin','editieren')?>?id=<?php echo$s->getId()?>">editieren</a>
+            </td>
+            <td>
+                <?php if($s->countTeilnehmer()===0):?>
+                    <a href="<?php echo$this->urlFor('seminartermin','loeschen')?>?id=<?php echo$s->getId()?>">löschen</a>
+                <?php else:?>
+                    nicht möglich
+                <?php endif</a></span>)
+			(line <span class="line-number">1</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+</div>
+		</div>
+	</div>
+	
+	
+	
+	
+	<p class="notes" id="credit">
+		Documentation generated on Fri, 02 Oct 2009 17:17:33 +0200 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</div></body>
+</html>

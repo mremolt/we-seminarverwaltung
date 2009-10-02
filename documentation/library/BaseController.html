@@ -75,7 +75,19 @@
 								<tr>
 					<td style="padding-right: 2em"><a href="../controllers/ErrorController.html">ErrorController</a></td>
 					<td>
-											Description of IndexController
+											Description of ErrorController
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em"><a href="../controllers/SeminarterminController.html">SeminarterminController</a></td>
+					<td>
+											Description of SeminarterminController
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em"><a href="../controllers/AuthController.html">AuthController</a></td>
+					<td>
+											Description of AuthController
 										</td>
 				</tr>
 							</table>
@@ -129,23 +141,23 @@
 		</div>
 		<div class="info-box-body">			
 			<div class="method-summary">
-																				<div class="method-definition">
-					static 						<span class="method-result">void</span>
-										<a href="#getControllerFiles" title="details" class="method-name">getControllerFiles</a>
-										()
-									</div>
-																																								<div class="method-definition">
-					static 						<span class="method-result">void</span>
-										<a href="#getValidControllerUrls" title="details" class="method-name">getValidControllerUrls</a>
-										()
-									</div>
-																																
+																																																																																																																																																				
 												<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#addMessage" title="details" class="method-name">addMessage</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$message</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#displayMessages" title="details" class="method-name">displayMessages</a>
+										()
+									</div>
+																<div class="method-definition">
 											<span class="method-result">void</span>
 										<a href="#getContext" title="details" class="method-name">getContext</a>
 										()
 									</div>
-																								<div class="method-definition">
+																<div class="method-definition">
 											<span class="method-result">void</span>
 										<a href="#getParam" title="details" class="method-name">getParam</a>
 											(<span class="var-type"></span>&nbsp;<span class="var-name">$name</span>)
@@ -160,7 +172,27 @@
 										<a href="#getTemplatePath" title="details" class="method-name">getTemplatePath</a>
 										()
 									</div>
-																								<div class="method-definition">
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#hasMessages" title="details" class="method-name">hasMessages</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#isGet" title="details" class="method-name">isGet</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#isPost" title="details" class="method-name">isPost</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#redirectTo" title="details" class="method-name">redirectTo</a>
+											([<span class="var-type"></span>&nbsp;<span class="var-name">$controller</span> = <span class="var-default">'index'</span>], [<span class="var-type"></span>&nbsp;<span class="var-name">$action</span> = <span class="var-default">'index'</span>], [<span class="var-type"></span>&nbsp;<span class="var-name">$params</span> = <span class="var-default">''</span>])
+									</div>
+																<div class="method-definition">
 											<span class="method-result">void</span>
 										<a href="#run" title="details" class="method-name">run</a>
 											(<span class="var-type"></span>&nbsp;<span class="var-name">$action</span>, [<span class="var-type"></span>&nbsp;<span class="var-name">$params</span> = <span class="var-default">array()</span>])
@@ -174,6 +206,31 @@
 											<span class="method-result">void</span>
 										<a href="#setParams" title="details" class="method-name">setParams</a>
 											(<span class="var-type"></span>&nbsp;<span class="var-name">$params</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#urlFor" title="details" class="method-name">urlFor</a>
+											([<span class="var-type"></span>&nbsp;<span class="var-name">$controller</span> = <span class="var-default">'index'</span>], [<span class="var-type"></span>&nbsp;<span class="var-name">$action</span> = <span class="var-default">'index'</span>])
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#_getControllerShortName" title="details" class="method-name">_getControllerShortName</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">array</span>
+										<a href="#_getPagingData" title="details" class="method-name">_getPagingData</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$className</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$baseUrl</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#_postRun" title="details" class="method-name">_postRun</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#_preRun" title="details" class="method-name">_preRun</a>
+										()
 									</div>
 								</div>
 		</div>
@@ -194,7 +251,7 @@
 					</div>
 		<div class="info-box-body">
 			<a name="var$_context" id="$_context"><!-- --></A>
-<div class="evenrow">
+<div class="oddrow">
 
 	<div class="var-header">
 		<span class="var-title">
@@ -215,7 +272,7 @@
 
 </div>
 <a name="var$_layoutName" id="$_layoutName"><!-- --></A>
-<div class="oddrow">
+<div class="evenrow">
 
 	<div class="var-header">
 		<span class="var-title">
@@ -236,7 +293,7 @@
 
 </div>
 <a name="var$_params" id="$_params"><!-- --></A>
-<div class="evenrow">
+<div class="oddrow">
 
 	<div class="var-header">
 		<span class="var-title">
@@ -257,7 +314,7 @@
 
 </div>
 <a name="var$_templateName" id="$_templateName"><!-- --></A>
-<div class="oddrow">
+<div class="evenrow">
 
 	<div class="var-header">
 		<span class="var-title">
@@ -293,35 +350,12 @@
 		</div>
 		<div class="info-box-body">
 			<A NAME='method_detail'></A>
-<a name="methodgetControllerFiles" id="getControllerFiles"><!-- --></a>
-<div class="evenrow">
-	
-	<div class="method-header">
-		<span class="method-title">static method getControllerFiles</span> (line <span class="line-number">74</span>)
-	</div> 
-	
-	<!-- ========== Info from phpDoc block ========= -->
-	<ul class="tags">
-				<li><span class="field">access:</span> public</li>
-			</ul>
-	
-	<div class="method-signature">
-	    static
-		<span class="method-result">void</span>
-		<span class="method-name">
-			getControllerFiles
-		</span>
-				()
-			</div>
-	
-		
-			
-	</div>
-<a name="methodgetValidControllerUrls" id="getValidControllerUrls"><!-- --></a>
+
+<a name="methodaddMessage" id="addMessage"><!-- --></a>
 <div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">static method getValidControllerUrls</span> (line <span class="line-number">80</span>)
+		<span class="method-title">addMessage</span> (line <span class="line-number">101</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -330,10 +364,37 @@
 			</ul>
 	
 	<div class="method-signature">
-	    static
 		<span class="method-result">void</span>
 		<span class="method-name">
-			getValidControllerUrls
+			addMessage
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$message</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$message</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methoddisplayMessages" id="displayMessages"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">displayMessages</span> (line <span class="line-number">114</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			displayMessages
 		</span>
 				()
 			</div>
@@ -341,9 +402,8 @@
 		
 			
 	</div>
-
 <a name="methodgetContext" id="getContext"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
 		<span class="method-title">getContext</span> (line <span class="line-number">34</span>)
@@ -366,7 +426,7 @@
 			
 	</div>
 <a name="methodgetParam" id="getParam"><!-- --></a>
-<div class="oddrow">
+<div class="evenrow">
 	
 	<div class="method-header">
 		<span class="method-title">getParam</span> (line <span class="line-number">23</span>)
@@ -394,7 +454,7 @@
 			
 	</div>
 <a name="methodgetParams" id="getParams"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
 		<span class="method-title">getParams</span> (line <span class="line-number">18</span>)
@@ -417,7 +477,7 @@
 			
 	</div>
 <a name="methodgetTemplatePath" id="getTemplatePath"><!-- --></a>
-<div class="oddrow">
+<div class="evenrow">
 	
 	<div class="method-header">
 		<span class="method-title">getTemplatePath</span> (line <span class="line-number">44</span>)
@@ -439,8 +499,111 @@
 		
 			
 	</div>
-<a name="methodrun" id="run"><!-- --></a>
+<a name="methodhasMessages" id="hasMessages"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">hasMessages</span> (line <span class="line-number">106</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			hasMessages
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodisGet" id="isGet"><!-- --></a>
 <div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">isGet</span> (line <span class="line-number">96</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			isGet
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodisPost" id="isPost"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">isPost</span> (line <span class="line-number">91</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			isPost
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodredirectTo" id="redirectTo"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">redirectTo</span> (line <span class="line-number">84</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			redirectTo
+		</span>
+					([<span class="var-type"></span>&nbsp;<span class="var-name">$controller</span> = <span class="var-default">'index'</span>], [<span class="var-type"></span>&nbsp;<span class="var-name">$action</span> = <span class="var-default">'index'</span>], [<span class="var-type"></span>&nbsp;<span class="var-name">$params</span> = <span class="var-default">''</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$controller</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$action</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$params</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodrun" id="run"><!-- --></a>
+<div class="oddrow">
 	
 	<div class="method-header">
 		<span class="method-title">run</span> (line <span class="line-number">51</span>)
@@ -471,7 +634,7 @@
 			
 	</div>
 <a name="methodsetContext" id="setContext"><!-- --></a>
-<div class="oddrow">
+<div class="evenrow">
 	
 	<div class="method-header">
 		<span class="method-title">setContext</span> (line <span class="line-number">39</span>)
@@ -502,7 +665,7 @@
 			
 	</div>
 <a name="methodsetParams" id="setParams"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
 		<span class="method-title">setParams</span> (line <span class="line-number">28</span>)
@@ -529,13 +692,160 @@
 		
 			
 	</div>
+<a name="methodurlFor" id="urlFor"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">urlFor</span> (line <span class="line-number">79</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			urlFor
+		</span>
+					([<span class="var-type"></span>&nbsp;<span class="var-name">$controller</span> = <span class="var-default">'index'</span>], [<span class="var-type"></span>&nbsp;<span class="var-name">$action</span> = <span class="var-default">'index'</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$controller</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$action</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_getControllerShortName" id="_getControllerShortName"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">_getControllerShortName</span> (line <span class="line-number">121</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_getControllerShortName
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="method_getPagingData" id="_getPagingData"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">_getPagingData</span> (line <span class="line-number">151</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Gibt die für das Paging relavanten Daten zurück und setzt sie auch gleich im Kontext</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			_getPagingData
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$className</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$baseUrl</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$className</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$baseUrl</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_postRun" id="_postRun"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">_postRun</span> (line <span class="line-number">139</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Hook-Methode</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_postRun
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="method_preRun" id="_preRun"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">_preRun</span> (line <span class="line-number">131</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Hook-Methode</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_preRun
+		</span>
+				()
+			</div>
+	
+		
+			
+			<hr class="separator" />
+		<div class="notes">Redefined in descendants as:</div>
+		<ul class="redefinitions">
+					<li>
+				<a href="../controllers/SeminarController.html#method_preRun">SeminarController::_preRun()</a>
+							</li>
+					<li>
+				<a href="../controllers/BenutzerController.html#method_preRun">BenutzerController::_preRun()</a>
+							</li>
+					<li>
+				<a href="../controllers/SeminarterminController.html#method_preRun">SeminarterminController::_preRun()</a>
+							</li>
+				</ul>
+	</div>
 						
 		</div>
 	</div>
 
 
 	<p class="notes" id="credit">
-		Documentation generated on Wed, 30 Sep 2009 18:01:05 +0200 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+		Documentation generated on Fri, 02 Oct 2009 17:17:32 +0200 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
 	</p>
 	</div></body>
 </html>

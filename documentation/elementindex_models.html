@@ -55,6 +55,13 @@
 			<div class="index-item-details"><a href="models/Seminar.html#var$_tableName">Seminar::$_tableName</a> in Seminar.php</div>
 					</dd>
 			<dt class="field">
+						<span class="method-title">_preInsert</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="models/Benutzer.html#method_preInsert">Benutzer::_preInsert()</a> in Benutzer.php</div>
+							<div class="index-item-description">Überladung des Hooks</div>
+					</dd>
+			<dt class="field">
 						<span class="method-title">__toString</span>
 					</dt>
 		<dd class="index-item-body">
@@ -152,11 +159,24 @@
 	</div>
 	<dl>
 			<dt class="field">
+						<span class="method-title">countBySeminartermin</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="models/Benutzer.html#methodcountBySeminartermin">Benutzer::countBySeminartermin()</a> in Benutzer.php</div>
+					</dd>
+			<dt class="field">
 						<span class="method-title">countSeminartermine</span>
 					</dt>
 		<dd class="index-item-body">
 			<div class="index-item-details"><a href="models/Seminar.html#methodcountSeminartermine">Seminar::countSeminartermine()</a> in Seminar.php</div>
 							<div class="index-item-description">Zählt die zugeordneten Seminartermine</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">countTeilnehmer</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="models/Seminartermin.html#methodcountTeilnehmer">Seminartermin::countTeilnehmer()</a> in Seminartermin.php</div>
+							<div class="index-item-description">Zählt die Teilnehmer eines Seminartermins</div>
 					</dd>
 		</dl>
 	<a name="e"></a>
@@ -178,6 +198,13 @@
 		<dd class="index-item-body">
 			<div class="index-item-details"><a href="models/Seminartermin.html#var$ende">Seminartermin::$ende</a> in Seminartermin.php</div>
 					</dd>
+			<dt class="field">
+						<span class="method-title">excludeBySeminartermin</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="models/Benutzer.html#methodexcludeBySeminartermin">Benutzer::excludeBySeminartermin()</a> in Benutzer.php</div>
+							<div class="index-item-description">Findet Benutzer, die nicht an einem Seminartermin teilnehmen über die Zwischentabelle nimmt_teil</div>
+					</dd>
 		</dl>
 	<a name="f"></a>
 	<div class="index-letter-section">
@@ -192,6 +219,12 @@
 		<dd class="index-item-body">
 			<div class="index-item-details"><a href="models/Seminartermin.html#methodfindByBenutzer">Seminartermin::findByBenutzer()</a> in Seminartermin.php</div>
 							<div class="index-item-description">Findet Seminartermine eines Benutzers über die Zwischentabelle nimmt_teil</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">findByIds</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="models/Benutzer.html#methodfindByIds">Benutzer::findByIds()</a> in Benutzer.php</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">findBySeminartermin</span>
@@ -223,11 +256,32 @@
 							<div class="index-item-description">Getter</div>
 					</dd>
 			<dt class="field">
+						<span class="method-title">getBeginnFormatiert</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="models/Seminartermin.html#methodgetBeginnFormatiert">Seminartermin::getBeginnFormatiert()</a> in Seminartermin.php</div>
+							<div class="index-item-description">Getter</div>
+					</dd>
+			<dt class="field">
 						<span class="method-title">getBeschreibung</span>
 					</dt>
 		<dd class="index-item-body">
 			<div class="index-item-details"><a href="models/Seminar.html#methodgetBeschreibung">Seminar::getBeschreibung()</a> in Seminar.php</div>
 							<div class="index-item-description">Getter</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">getBeschreibungFormatiert</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="models/Seminar.html#methodgetBeschreibungFormatiert">Seminar::getBeschreibungFormatiert()</a> in Seminar.php</div>
+							<div class="index-item-description">Getter</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">getDauer</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="models/Seminartermin.html#methodgetDauer">Seminartermin::getDauer()</a> in Seminartermin.php</div>
+							<div class="index-item-description">Gibt die Dauer eines Seminartermins in Tagen aus</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">getEmail</span>
@@ -244,6 +298,13 @@
 							<div class="index-item-description">Getter</div>
 					</dd>
 			<dt class="field">
+						<span class="method-title">getEndeformatiert</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="models/Seminartermin.html#methodgetEndeformatiert">Seminartermin::getEndeformatiert()</a> in Seminartermin.php</div>
+							<div class="index-item-description">Getter</div>
+					</dd>
+			<dt class="field">
 						<span class="method-title">getKategorie</span>
 					</dt>
 		<dd class="index-item-body">
@@ -255,6 +316,20 @@
 					</dt>
 		<dd class="index-item-body">
 			<div class="index-item-details"><a href="models/Benutzer.html#methodgetName">Benutzer::getName()</a> in Benutzer.php</div>
+							<div class="index-item-description">Getter</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">getNichtTeilnehmer</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="models/Seminartermin.html#methodgetNichtTeilnehmer">Seminartermin::getNichtTeilnehmer()</a> in Seminartermin.php</div>
+							<div class="index-item-description">Gibt die Benutzer zurück, nich noch nicht für den Seminartermin gebucht sind</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">getPasswort</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="models/Benutzer.html#methodgetPasswort">Benutzer::getPasswort()</a> in Benutzer.php</div>
 							<div class="index-item-description">Getter</div>
 					</dd>
 			<dt class="field">
@@ -276,6 +351,13 @@
 					</dt>
 		<dd class="index-item-body">
 			<div class="index-item-details"><a href="models/Benutzer.html#methodgetRegistriert_seit">Benutzer::getRegistriert_seit()</a> in Benutzer.php</div>
+							<div class="index-item-description">Getter</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">getRegistriert_seitFormatiert</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="models/Benutzer.html#methodgetRegistriert_seitFormatiert">Benutzer::getRegistriert_seitFormatiert()</a> in Benutzer.php</div>
 							<div class="index-item-description">Getter</div>
 					</dd>
 			<dt class="field">
@@ -394,6 +476,13 @@
 					</dt>
 		<dd class="index-item-body">
 			<div class="index-item-details"><a href="models/Benutzer.html#var$registriert_seit">Benutzer::$registriert_seit</a> in Benutzer.php</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">removeTeilnehmer</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="models/Seminartermin.html#methodremoveTeilnehmer">Seminartermin::removeTeilnehmer()</a> in Seminartermin.php</div>
+							<div class="index-item-description">Entfernt einen Teilnehmer aus dem Seminartermin</div>
 					</dd>
 		</dl>
 	<a name="s"></a>
