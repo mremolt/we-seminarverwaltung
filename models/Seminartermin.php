@@ -2,7 +2,7 @@
 
 namespace models;
 use library\Database, library\ActiveRecord;
-use \PDO;
+use \PDO, \DateTime, \Exception;
 
 /**
  * Ein Seminartermin
@@ -22,11 +22,16 @@ class Seminartermin extends ActiveRecord
     /**
      * Getter
      *
-     * @return string
+     * @return DateTime
      */
     public function getBeginn()
     {
-        return $this->beginn;
+        try {
+            $beginn = new DateTime($this->beginn);
+        } catch (Exception $e) {
+            $beginn = new DateTime();
+        }
+        return $beginn;
     }
 
     /**
@@ -36,7 +41,7 @@ class Seminartermin extends ActiveRecord
      */
     public function getBeginnFormatiert()
     {
-        return strftime('%d.%m.%Y', strtotime($this->beginn));
+        return $this->getBeginn()->format('d.m.Y');
     }
 
     /**
@@ -47,21 +52,28 @@ class Seminartermin extends ActiveRecord
      */
     public function setBeginn($beginn)
     {
-        if ( strtotime($beginn) === false ) {
+        try {
+            $beginnDateTime = new DateTime($beginn);
+            $this->beginn = $beginn;
+        } catch (Exception $e) {
             $this->addError('beginn', 'Das Feld Beginn enthält ein ungültiges Datum');
         }
-        $this->beginn = $beginn;
         return $this;
     }
 
     /**
      * Getter
      *
-     * @return string
+     * @return DateTime
      */
     public function getEnde()
     {
-        return $this->ende;
+        try {
+            $ende = new DateTime($this->ende);
+        } catch (Exception $e) {
+            $ende = new DateTime();
+        }
+        return $ende;
     }
 
     /**
@@ -71,7 +83,7 @@ class Seminartermin extends ActiveRecord
      */
     public function getEndeformatiert()
     {
-        return strftime('%d.%m.%Y', strtotime($this->ende));
+        return $this->getEnde()->format('d.m.Y');
     }
 
     /**
@@ -82,12 +94,17 @@ class Seminartermin extends ActiveRecord
      */
     public function setEnde($ende)
     {
-        if ( strtotime($ende) === false ) {
+        try {
+            $endeDateTime = new DateTime($ende);
+            $this->ende = $ende;
+
+            $dauer = $this->getBeginn()->diff($endeDateTime);
+            if ($dauer->invert === 1) {
+                $this->addError('ende', 'Das Feld Ende liegt zeitlich vor dem Beginn');
+            }
+        } catch (Exception $e) {
             $this->addError('ende', 'Das Feld Ende enthält ein ungültiges Datum');
-        } elseif (strtotime($ende) <= strtotime($this->getBeginn())) {
-            $this->addError('ende', 'Das Feld Ende liegt zeitlich vor dem Beginn');
         }
-        $this->ende = $ende;
         return $this;
     }
 
@@ -114,6 +131,19 @@ class Seminartermin extends ActiveRecord
         }
         $this->raum = $raum;
         return $this;
+    }
+
+    /**
+     * Gibt die Dauer eines Seminartermins in Tagen aus
+     *
+     * @return integer
+     */
+    public function getDauer()
+    {
+        $beginn = $this->getBeginn();
+        $ende = $this->getEnde();
+
+        return $beginn->diff($ende);
     }
 
     /**
@@ -149,6 +179,16 @@ class Seminartermin extends ActiveRecord
     }
 
     /**
+     * Gibt die Benutzer zurück, nich noch nicht für den Seminartermin gebucht sind
+     *
+     * @return array
+     */
+    public function getNichtTeilnehmer()
+    {
+        return Benutzer::excludeBySeminartermin($this);
+    }
+
+    /**
      * Fügt dem Seminartermin einen neuen Teilnehmer (Klasse Benutzer) hinzu.
      *
      * @param Benutzer $teilnehmer
@@ -170,6 +210,34 @@ class Seminartermin extends ActiveRecord
     }
 
     /**
+     * Entfernt einen Teilnehmer aus dem Seminartermin
+     *
+     * @param Benutzer $teilnehmer
+     * @return Seminartermin
+     */
+    public function removeTeilnehmer(Benutzer $teilnehmer)
+    {
+        // nur wenn der Teilnehmer gespeichert ist, macht das löschen Sinn
+        if ( $teilnehmer->getId() > 0 ) {
+            $sql = 'DELETE FROM nimmt_teil WHERE benutzer_id = ? AND seminartermin_id = ?';
+            $statement = Database::getInstance()->prepare($sql);
+            $statement->execute(array( $teilnehmer->getId(), $this->getId() ));
+        }
+        return $this;
+    }
+
+    /**
+     * Zählt die Teilnehmer eines Seminartermins
+     *
+     * @return integer
+     */
+    public function countTeilnehmer()
+    {
+        // TODO: Lösung, die weniger Performance verschwendet
+        return count($this->getTeilnehmer());
+    }
+
+    /**
      * Gibt eine kurze Beschreibung des Objekts zurück
      *
      * @return string
@@ -177,11 +245,10 @@ class Seminartermin extends ActiveRecord
     public function __toString()
     {
         return sprintf(
-            '%s: "%s" von %s bis %s',
-            get_called_class(),
+            '"%s" von %s bis %s',
             $this->getSeminar()->getTitel(),
-            $this->getBeginn(),
-            $this->getEnde()
+            $this->getBeginnFormatiert(),
+            $this->getEndeFormatiert()
         );
     }
 

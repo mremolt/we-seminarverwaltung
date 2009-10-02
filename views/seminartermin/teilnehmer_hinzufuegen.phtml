@@ -1,0 +1,20 @@
+<h2>
+    Teilnehmer zum Seminartermin <strong><?php echo $seminartermin ?></strong> hinzufügen.
+</h2>
+
+<form action="<?php echo $this->urlFor('seminartermin', 'teilnehmer_hinzufuegen') ?>" method="post">
+    <table>
+    <?php foreach ($nichtTeilnehmer as $t): ?>
+        <tr>
+            <td><input type="checkbox" name="teilnehmer_ids[]" value="<?php echo $t->getId() ?>" /></td>
+            <td><?php echo $t ?></td>
+        </tr>
+    <?php endforeach; ?>
+    </table>
+    <tr>
+        <td colspan="2">
+            <input type="hidden" name="seminartermin_id" value="<?php echo $seminartermin->getId() ?>" />
+            <input type="submit" value="Teilnehmer hinzufügen" />
+        </td>
+    </tr>
+</form>

@@ -9,7 +9,7 @@
 <form action="<?php echo $save_url ?>" method="post">
     <input type="hidden" name="id" value="<?php echo $seminar->getId() ?>" />
     Titel: <input type="text" name="titel" value="<?php echo $seminar->getTitel() ?>" /><br />
-    Beschreibung:<br /><textarea name="beschreibung" rows="10" cols="30"><?php echo $seminar->getBeschreibung() ?></textarea><br />
+    Beschreibung:<br /><textarea name="beschreibung" rows="10" cols="50"><?php echo $seminar->getBeschreibung() ?></textarea><br />
     Preis: <input type="text" name="preis" value="<?php echo $seminar->getPreis() ?>" /> €<br />
     Kategorie: <input type="text" name="kategorie" value="<?php echo $seminar->getKategorie() ?>" /><br />
     <input type="submit" value="Seminar speichern" />

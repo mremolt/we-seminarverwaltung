@@ -1,0 +1,14 @@
+<p>
+    Wollen Sie den Teilnehmer <strong><?php echo $teilnehmer ?></strong> aus dem
+    Seminartermin <strong><?php echo $seminartermin ?></strong> wirklich löschen?
+</p>
+
+<form action="<?php echo $this->urlfor('seminartermin', 'teilnehmer_entfernen') ?>" method="post">
+    <input type="hidden" name="seminartermin_id" value="<?php echo $seminartermin->getId() ?>" />
+    <input type="hidden" name="teilnehmer_id" value="<?php echo $teilnehmer->getId() ?>" />
+    <input type="submit" value="löschen" />
+</form>
+
+<p><a href="<?php echo $this->urlFor('seminartermin', 'editieren') ?>?id=<?php echo $seminartermin->getId() ?>">
+    zurück zur Übersicht
+</a></p>

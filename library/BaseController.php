@@ -81,10 +81,10 @@ abstract class BaseController
         return Router::getInstance()->getUrlFor($controller, $action);
     }
 
-    public function redirectTo($controller = 'index', $action = 'index')
+    public function redirectTo($controller = 'index', $action = 'index', $params = '')
     {
         $url = $this->urlFor($controller, $action);
-        header('Location: ' . $url);
+        header('Location: ' . $url . $params);
         exit();
     }
 

@@ -17,8 +17,8 @@
     </select><br />
 
     Raum: <input type="text" name="raum" value="<?php echo $seminartermin->getRaum() ?>" /><br />
-    Beginn (YYYY-MM-DD): <input type="text" name="beginn" value="<?php echo $seminartermin->getBeginn() ?>" /><br />
-    Ende (YYYY-MM-DD): <input type="text" name="ende" value="<?php echo $seminartermin->getEnde() ?>" /><br />
+    Beginn (YYYY-MM-DD): <input type="text" name="beginn" value="<?php echo $seminartermin->getBeginn()->format('Y-m-d') ?>" /><br />
+    Ende (YYYY-MM-DD): <input type="text" name="ende" value="<?php echo $seminartermin->getEnde()->format('Y-m-d') ?>" /><br />
     <input type="submit" value="Seminartermin speichern" />
 </form>
 

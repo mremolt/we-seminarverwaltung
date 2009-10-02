@@ -22,4 +22,30 @@
     <input type="submit" value="Seminartermin speichern" />
 </form>
 
+<h2>Teilnehmer des Seminars</h2>
+<table border="1">
+    <tr>
+        <th>Vorname</th>
+        <th>Name</th>
+        <th>E-Mail-Adresse</th>
+        <th>löschen</th>
+    </tr>
+    <?php foreach ($teilnehmer as $t): ?>
+        <tr>
+            <td><?php echo $t->getVorname() ?></td>
+            <td><?php echo $t->getName() ?></td>
+            <td><?php echo $t->getEmail() ?></td>
+            <td>
+                <a href="<?php echo $this->urlFor('seminartermin', 'teilnehmer_entfernen') ?>?seminartermin_id=<?php echo $seminartermin->getId() ?>&teilnehmer_id=<?php echo $t->getId() ?>">
+                    löschen
+                </a>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+</table>
+
+<p><a href="<?php echo $this->urlFor('seminartermin', 'teilnehmer_hinzufuegen') ?>?seminartermin_id=<?php echo $seminartermin->getId() ?>">
+    Teilnehmer hinzufügen
+</a></p>
+
 <p><a href="<?php echo $this->urlFor('seminartermin') ?>">zurück zur Übersicht</a>

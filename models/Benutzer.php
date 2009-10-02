@@ -217,8 +217,7 @@ class Benutzer extends ActiveRecord
     public function __toString()
     {
         return htmlspecialchars(sprintf(
-            '%s: "%s %s %s" <%s>',
-            get_called_class(),
+            '"%s %s %s" <%s>',
             $this->getAnrede(),
             $this->getVorname(),
             $this->getName(),
@@ -233,6 +232,12 @@ class Benutzer extends ActiveRecord
     {
         // vor dem ersten Einfügen wird das Registierungsdatum auf 'heute' gesetzt
         $this->setRegistriert_seit(strftime('%Y-%m-%d'));
+    }
+
+    public static function findByIds(array $ids)
+    {
+        $value = '(' . implode(', ', $ids) . ')';
+        return static::findBy('id', $value, ' IN ');
     }
 
     /**
@@ -252,6 +257,36 @@ class Benutzer extends ActiveRecord
         );
         $statement = Database::getInstance()->prepare($sql);
         $statement->execute(array( $seminartermin->getId() ));
+        $statement->setFetchMode(PDO::FETCH_CLASS, get_called_class());
+        return $statement->fetchAll();
+    }
+
+    /**
+     * Findet Benutzer, die nicht an einem Seminartermin teilnehmen über die Zwischentabelle nimmt_teil
+     *
+     * Hier ist ein SQL JOIN notwendig, wobei die Spalten der Zwischentabelle nicht
+     * im Objekt auftauchen sollen, also kein SELECT *.
+     *
+     * @param Seminartermin $seminartermin
+     * @return array
+     */
+    public static function excludeBySeminartermin(Seminartermin $seminartermin)
+    {
+        $teilnehmer = $seminartermin->getTeilnehmer();
+
+        if ($teilnehmer) {
+            // wenn es schon Teilnehmer gibt, finde alle Nicht-Teilnehmer
+            $teilnehmer_ids = array();
+            foreach ($teilnehmer as $t) {
+                $teilnehmer_ids[] = $t->getId();
+            }
+            $sql = 'SELECT * FROM benutzer WHERE id NOT IN (' . implode(", ", $teilnehmer_ids) . ')';
+        } else {
+            // ansonsten finde alle Benutzer
+            $sql = 'SELECT * FROM benutzer';
+        }
+        $statement = Database::getInstance()->prepare($sql);
+        $statement->execute();
         $statement->setFetchMode(PDO::FETCH_CLASS, get_called_class());
         return $statement->fetchAll();
     }

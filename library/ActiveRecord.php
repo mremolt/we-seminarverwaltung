@@ -203,7 +203,9 @@ abstract class ActiveRecord
         // nur ausführen, wenn $attribute auch als Spalte in der Tabelle existiert
         if ( in_array($attribute, static::getTableColumns()) ) {
             $sql  = 'SELECT * FROM ' . static::getTableName();
-            $sql .= ' WHERE ' . $attribute . $operator . '?';
+            // $value wird hier nicht per Platzhalter eingefügt, um das SQL flexibler
+            // zu halten. Der aufrufende Code ist für das Sichern/Formatieren verantwortlich
+            $sql .= ' WHERE ' . $attribute . ' ' . $operator . ' ' . $value;
 
             $statement = Database::getInstance()->prepare($sql);
             $statement->execute(array($value));

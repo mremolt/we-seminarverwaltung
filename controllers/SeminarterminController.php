@@ -2,7 +2,7 @@
 
 namespace controllers;
 use library\BaseController;
-use models\Seminartermin, models\Seminar;
+use models\Seminartermin, models\Seminar, models\Benutzer;
 
 /**
  * Description of SeminarterminController
@@ -27,7 +27,11 @@ class SeminarterminController extends BaseController
             if ($seminartermin->isValid()) {
                 $seminartermin->save();
                 $this->addMessage('Der Seminartermin wurde erfolgreich gespeichert');
-                $this->redirectTo('seminartermin', 'index');
+                $this->redirectTo(
+                    'seminartermin',
+                    'editieren',
+                    '?id=' . $seminartermin->getId()
+                );
             }
         } else {
             $seminar_id = 0;
@@ -49,7 +53,11 @@ class SeminarterminController extends BaseController
             if ($seminartermin->isValid()) {
                 $seminartermin->save();
                 $this->addMessage('Der Seminartermin wurde erfolgreich gespeichert');
-                $this->redirectTo('seminartermin', 'index');
+                $this->redirectTo(
+                    'seminartermin',
+                    'editieren',
+                    '?id=' . $seminartermin->getId()
+                );
             }
         } else {
             $seminar_id = $seminartermin->getSeminar()->getId();
@@ -57,19 +65,72 @@ class SeminarterminController extends BaseController
         
         $this->setContext('seminartermin', $seminartermin);
         $this->setContext('seminare', Seminar::findAll());
+        $this->setContext('teilnehmer', $seminartermin->getTeilnehmer());
         $this->setContext('save_url', $this->urlFor('seminartermin', 'editieren'));
         $this->setContext('seminar_id', $seminar_id);
     }
 
     public function loeschenAction()
     {
-        $seminar = Seminar::find($_REQUEST['id']);
+        $seminartermin = Seminartermin::find($_REQUEST['id']);
 
         if ($this->isPost()) {
-            $seminar->delete();
-            $this->addMessage('Das Seminar "' . $seminar->getTitel() . '" wurde erfolgreich gelöscht');
-            $this->redirectTo('seminar', 'index');
+            $seminartermin->delete();
+            $this->addMessage('Der Seminartermin "' . $seminartermin . '" wurde erfolgreich gelöscht');
+            $this->redirectTo('seminartermin', 'index');
         }
-        $this->setContext('seminar', $seminar);
+        $this->setContext('seminartermin', $seminartermin);
     }
+
+    public function teilnehmer_hinzufuegenAction()
+    {
+        $seminartermin = Seminartermin::find($_REQUEST['seminartermin_id']);
+
+        if ($this->isPost()) {
+            $neueTeilnehmer = Benutzer::findByIds($_POST['teilnehmer_ids']);
+            foreach ($neueTeilnehmer as $t) {
+                $seminartermin->addTeilnehmer($t);
+            }
+            $message = sprintf(
+                'Zum Seminartermin "%s" wurden die Teilnehmer <br />%s hinzugefügt.',
+                $seminartermin,
+                implode('<br />', $neueTeilnehmer)
+            );
+            $this->addMessage($message);
+            $this->redirectTo(
+                'seminartermin',
+                'editieren',
+                '?id=' . $seminartermin->getId()
+            );
+        } else {
+            $nichtTeilnehmer = $seminartermin->getNichtTeilnehmer();
+            $this->setContext('seminartermin', $seminartermin);
+            $this->setContext('nichtTeilnehmer', $nichtTeilnehmer);
+        }
+    }
+
+    public function teilnehmer_entfernenAction()
+    {
+        $seminartermin = Seminartermin::find($_REQUEST['seminartermin_id']);
+        $teilnehmer = Benutzer::find($_REQUEST['teilnehmer_id']);
+
+        if ($this->isPost()) {
+            $seminartermin->removeTeilnehmer($teilnehmer);
+            $message = sprintf(
+                'Aus dem Seminartermin "%s" wurde der Teilnehmer "%s" entfernt.',
+                $seminartermin,
+                $teilnehmer
+            );
+            $this->addMessage($message);
+            $this->redirectTo(
+                'seminartermin',
+                'editieren',
+                '?id=' . $seminartermin->getId()
+            );
+        } else {
+            $this->setContext('seminartermin', $seminartermin);
+            $this->setContext('teilnehmer', $teilnehmer);
+        }
+    }
+
 }
