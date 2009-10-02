@@ -15,4 +15,4 @@ define('DB_USER', 'root');
 define('DB_PASS', '');
 
 // how many Elements should be displayed per page
-define('ELEMENTS_PER_PAGE', 4);
+define('ELEMENTS_PER_PAGE', 5);
