@@ -15,7 +15,7 @@
             <td><?php echo $s->getRaum() ?></td>
             <td><?php echo $s->getBeginnFormatiert() ?></td>
             <td><?php echo $s->getEndeFormatiert() ?></td>
-            <td><?php echo $s->getDauer()->format('%d') ?> Tag(e)</td>
+            <td><?php echo $s->getDauer()->format('%d') + 1 ?> Tag(e)</td>
             <td><?php echo $s->countTeilnehmer() ?></td>
             <td>
                 <a href="<?php echo $this->urlFor('seminartermin', 'editieren') ?>?id=<?php echo $s->getId() ?>">editieren</a>

@@ -1,7 +1,7 @@
 <?php
 
 namespace models;
-use library\Database, library\ActiveRecord;
+use library\Database, library\ActiveRecord, library\DateTime;
 use \PDO;
 
 /**
@@ -126,7 +126,7 @@ class Benutzer extends ActiveRecord
      */
     public function getRegistriert_seit()
     {
-        return $this->registriert_seit;
+        return new DateTime($this->registriert_seit);
     }
 
     /**
@@ -136,7 +136,7 @@ class Benutzer extends ActiveRecord
      */
     public function getRegistriert_seitFormatiert()
     {
-        return strftime('%d.%m.%Y', strtotime($this->registriert_seit));
+        return $this->getRegistriert_seit()->format('d.m.Y');
     }
 
     /**

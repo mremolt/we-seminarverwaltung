@@ -1,8 +1,8 @@
 <?php
 
 namespace models;
-use library\Database, library\ActiveRecord;
-use \PDO, \DateTime, \Exception;
+use library\Database, library\ActiveRecord, library\DateTime;
+use \PDO, \Exception;
 
 /**
  * Ein Seminartermin
