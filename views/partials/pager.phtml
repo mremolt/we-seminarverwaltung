@@ -1,0 +1,23 @@
+<p>
+    <?php if($page > 1): ?>
+        <a href="<?php echo $paging_url . 1 ?>"> &lt;&lt;</a> |
+        <a href="<?php echo $paging_url . ($page - 1) ?>"> &lt;</a> |
+    <?php else: ?>
+        &lt;&lt; | &lt; |
+    <?php endif; ?>
+
+    <?php for ($i = 1; $i <= $number_of_pages; $i++): ?>
+        <?php if($page != $i): ?>
+            <a href="<?php echo $paging_url . $i ?>"><?php echo $i ?></a> |
+        <?php else: ?>
+            <?php echo $i ?> |
+        <?php endif; ?>
+    <?php endfor; ?>
+
+    <?php if($page < $number_of_pages): ?>
+        <a href="<?php echo $paging_url . ($page + 1) ?>"> &gt;</a> |
+        <a href="<?php echo $paging_url . $number_of_pages ?>"> &gt;&gt;</a>
+    <?php else: ?>
+        &gt; | &gt;&gt;
+    <?php endif; ?>
+</p>

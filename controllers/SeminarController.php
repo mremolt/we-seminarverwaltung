@@ -18,9 +18,28 @@ class SeminarController extends BaseController
 
     public function indexAction()
     {
-        $seminare = Seminar::findAll();
+        $order_by = array_key_exists('order_by', $_GET) ? $_GET['order_by'] : false;
+        $asc      = (array_key_exists('asc', $_GET) && $_GET['asc'] === 'false') ? false : true;
+        $page     = array_key_exists('page', $_GET) ? intval($_GET['page']) : 1;
+
+        $limit = ELEMENTS_PER_PAGE;
+        $offset = (ELEMENTS_PER_PAGE * $page) - ELEMENTS_PER_PAGE;
+
+        $seminare = Seminar::findAll($order_by, $asc, $limit, $offset);
+
+
+        $paging_url  = $this->urlFor('seminar', 'index') . '?';
+        $paging_url .= $order_by ? 'order_by=' . $order_by . '&' : '';
+        $paging_url .= $asc ? 'asc=true&' : 'asc=false&';
+        $paging_url .= 'page=';
+
         $this->setContext('seminare', $seminare);
         $this->setContext('title', 'Liste aller Seminare');
+        $this->setContext('asc', $asc);
+        $this->setContext('page', $page);
+        $this->setContext('paging_url', $paging_url);
+
+        $this->setContext('number_of_pages', ceil(Seminar::count() / ELEMENTS_PER_PAGE));
     }
 
     public function neuAction()

@@ -13,3 +13,6 @@ define('RELATIVE_URL', str_replace(PROJECT_URL, '', parse_url($_SERVER['REQUEST_
 define('DB_DSN', 'mysql:host=127.0.0.1;dbname=seminarverwaltung');
 define('DB_USER', 'root');
 define('DB_PASS', '');
+
+// how many Elements should be displayed per page
+define('ELEMENTS_PER_PAGE', 4);

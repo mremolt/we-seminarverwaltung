@@ -1,9 +1,11 @@
-<table border="1">
+<?php require 'views/partials/pager.phtml' ?>
+
+<table border="1" style="width: 100%">
     <tr>
-        <th>Titel</th>
-        <th>Beschreibung</th>
-        <th>Preis (in Euro)</th>
-        <th>Kategorie</th>
+        <th><a href="<?php echo $this->urlFor('seminar', 'index') ?>?order_by=titel&asc=<?php echo $asc ? 'false' : 'true' ?>">Titel</a></th>
+        <th><a href="<?php echo $this->urlFor('seminar', 'index') ?>?order_by=beschreibung&asc=<?php echo $asc ? 'false' : 'true' ?>">Beschreibung</a></th>
+        <th><a href="<?php echo $this->urlFor('seminar', 'index') ?>?order_by=preis&asc=<?php echo $asc ? 'false' : 'true' ?>">Preis (in Euro)</a></th>
+        <th><a href="<?php echo $this->urlFor('seminar', 'index') ?>?order_by=kategorie&asc=<?php echo $asc ? 'false' : 'true' ?>">Kategorie</a></th>
         <th>editieren</th>
         <th>löschen</th>
     </tr>
@@ -22,6 +24,9 @@
         </tr>
     <?php endforeach; ?>
 </table>
+
+<?php require 'views/partials/pager.phtml' ?>
+
 <p>
     <a href="<?php echo $this->urlFor('seminar', 'neu') ?>">Neues Seminar eintragen</a>
 </p>

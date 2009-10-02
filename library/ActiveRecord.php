@@ -189,16 +189,17 @@ abstract class ActiveRecord
      * 
      * @return array
      */
-    public static function findAll()
+    public static function findAll($order_by = '', $ascending = true, $limit = false, $offset = false)
     {
         $sql = 'SELECT * FROM ' . static::getTableName();
-        
+        $sql = static::_addOrderingAndLimit($sql, $order_by, $ascending, $limit, $offset);
+
         $statement = Database::getInstance()->query($sql);
         $statement->setFetchMode(PDO::FETCH_CLASS, get_called_class());
         return $statement->fetchAll();
     }
 
-    public static function findBy($attribute, $value, $operator = '=')
+    public static function findBy($attribute, $value, $operator = '=', $order_by = '', $ascending = true, $limit = false, $offset = false)
     {
         // nur ausführen, wenn $attribute auch als Spalte in der Tabelle existiert
         if ( in_array($attribute, static::getTableColumns()) ) {
@@ -206,6 +207,8 @@ abstract class ActiveRecord
             // $value wird hier nicht per Platzhalter eingefügt, um das SQL flexibler
             // zu halten. Der aufrufende Code ist für das Sichern/Formatieren verantwortlich
             $sql .= ' WHERE ' . $attribute . ' ' . $operator . ' ' . $value;
+
+            $sql = static::_addOrderingAndLimit($sql, $order_by, $ascending, $limit, $offset);
 
             $statement = Database::getInstance()->prepare($sql);
             $statement->execute(array($value));
@@ -424,5 +427,34 @@ abstract class ActiveRecord
         $parts = explode('\\', $className);
         // der Klassenname ist das letzte Element im Array
         return array_pop($parts);
+    }
+
+    /**
+     * Fügt einer SQL-Anweisung ORDER BY und LIMIT hinzu
+     * 
+     * @param string $sql
+     * @param string $order_by
+     * @param boolean $ascending
+     * @param integer $limit
+     * @param integer $offset
+     * @return string
+     */
+    protected static function _addOrderingAndLimit($sql, $order_by = '', $ascending = true, $limit = false, $offset = false)
+    {
+        if ($order_by) {
+            $sql .= ' ORDER BY ' . addslashes($order_by);
+            if ($ascending) {
+                $sql .= ' ASC';
+            } else {
+                $sql .= ' DESC';
+            }
+        }
+        if (is_int($limit)) {
+            $sql .= ' LIMIT ' . addslashes($limit);
+            if (is_int($offset)) {
+                $sql .= ' OFFSET ' . addslashes($offset);
+            }
+        }
+        return $sql;
     }
 }
