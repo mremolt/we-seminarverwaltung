@@ -21,7 +21,7 @@
                 <a href="<?php echo $this->urlFor('seminartermin', 'editieren') ?>?id=<?php echo $s->getId() ?>">editieren</a>
             </td>
             <td>
-                <?php if($s->countTeilnehmer() === 0): ?>
+                <?php if( $s->countTeilnehmer() === 0 ): ?>
                     <a href="<?php echo $this->urlFor('seminartermin', 'loeschen') ?>?id=<?php echo $s->getId() ?>">löschen</a>
                 <?php else: ?>
                     nicht möglich

@@ -267,7 +267,7 @@ class Benutzer extends ActiveRecord
         $statement = Database::getInstance()->prepare($sql);
         $statement->execute(array( $seminartermin->getId() ));
         $data = $statement->fetch();
-        return $data['count'];
+        return intval($data['count']);
     }
 
     /**
