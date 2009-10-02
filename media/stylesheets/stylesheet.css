@@ -1,6 +1,19 @@
 h1 {
-    font-size: 22px;
+    font-size: 24px;
     margin-left: 20px;
+    color: #6F8395;
+}
+
+h2 {
+    font-size: 20px;
+    margin-left: 20px;
+    color: #6F8395;
+}
+
+h3 {
+    font-size: 16px;
+    margin-left: 20px;
+    color: #6F8395;
 }
 
 table {
@@ -11,6 +24,23 @@ table {
 p, ul, form {
     margin-left: 20px;
     padding-left: 0px;
+}
+
+img {
+    border: 0px;
+}
+
+a {
+    color: #FF6600;
+}
+
+body {
+    background-color: #E9EFF9;
+}
+
+#corporate {
+    position: absolute;
+    left: 50px;
 }
 
 

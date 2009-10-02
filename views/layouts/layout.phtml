@@ -13,8 +13,11 @@
     <div id="gesamt">
 
         <div id="kopf">
-            <img src="<?php echo PROJECT_URL ?>/media/images/logo.png" align="middle" alt="logo" />
-            <img src="<?php echo PROJECT_URL ?>/media/images/corporate.png" align="middle" alt="corporate" />
+            <a href="<?php echo $this->urlFor() ?>">
+                <img src="<?php echo PROJECT_URL ?>/media/images/logo.png" align="middle" alt="logo" />
+            </a>
+
+            <img id="corporate" src="<?php echo PROJECT_URL ?>/media/images/corporate.png" align="middle" alt="corporate" />
             <h1>
                 
                 Die Seminarverwaltung - <?php echo $title ?>
