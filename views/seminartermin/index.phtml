@@ -21,7 +21,11 @@
                 <a href="<?php echo $this->urlFor('seminartermin', 'editieren') ?>?id=<?php echo $s->getId() ?>">editieren</a>
             </td>
             <td>
-                <a href="<?php echo $this->urlFor('seminartermin', 'loeschen') ?>?id=<?php echo $s->getId() ?>">löschen</a>
+                <?php if($s->countTeilnehmer() === 0): ?>
+                    <a href="<?php echo $this->urlFor('seminartermin', 'loeschen') ?>?id=<?php echo $s->getId() ?>">löschen</a>
+                <?php else: ?>
+                    nicht möglich
+                <?php endif; ?>
             </td>
         </tr>
     <?php endforeach; ?>

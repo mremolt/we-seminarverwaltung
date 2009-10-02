@@ -35,12 +35,13 @@ final class Database
     public static function getInstance()
     {
         if (! static::$db instanceof PDO) {
-            $dsn     = 'mysql:host=127.0.0.1;dbname=seminarverwaltung';
-            $user    = 'root';
-            $pass    = '';
+            $dsn     = DB_DSN;
+            $user    = DB_USER;
+            $pass    = DB_PASS;
             $options = array(
-                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                PDO::ATTR_PERSISTENT => true,
+                PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+                PDO::ATTR_PERSISTENT         => true,
+                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
             );
             static::$db = new PDO($dsn, $user, $pass, $options);
             static::$db->query('SET NAMES utf8');
